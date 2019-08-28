@@ -1,6 +1,5 @@
 <template>
   <div style="position:relative">
-    <!-- <van-nav-bar title="一月康旅卡" left-arrow @click-left="onClickLeft" style="background-color:#ededed"/> -->
      <van-row class="m-header">
       <van-col span="2">
         <van-icon name="arrow-left" class="m-header-icon" @click="onClickLeft"/>
@@ -11,15 +10,10 @@
     <img :src="page_data.img" />
     <div class="m-l">{{page_data.name}}</div>
     <div class="m-r">￥{{page_data.money}}</div>
-    <div class="m-rss" v-if='page_data.scorecost>0'>积分{{page_data.scorecost}}</div>
-    <div  class="m-r" v-else></div>
-    <div class="m-r" v-if='page_data.hasmprice=0'>会员价{{page_data.mprice}}</div>
-    <div  class="m-r" v-else></div>
     <hr style="background: #ededed; border: none; height: 0.15rem; clear:both" />
     <div style="margin:0.8rem 0 0 0.6rem">
-      <div v-if='this.$route.query.kind===5'><div v-html="page_data.des"></div></div>
-      <div v-else><p class="m-pp">产品权益</p>
-      <div v-html="page_data.des"></div></div>
+      <p class="m-pp">产品权益</p>
+      <div v-html="page_data.des"></div>
       <div >
     <div style="overflow:hidden;margin-top:.1rem;margin-bottom:1.5rem;">
     <div style="display:flex;width:60%;float:right;margin-bottom:1.5rem">
@@ -35,10 +29,13 @@
   </div>
       
     </div>
-   <!--  <van-submit-bar :price="35000000" button-text="立即购买" @submit="onSubmit"  /> -->
+    <div class="m-check">
+      <input type="checkbox" id="icheck" style="position:absolute;top:0.15rem;left:0.4rem" @click="check">
+      <span style="position:absolute;top:0.05rem;left:0.8rem">已阅读并同意<a @click="goa">《常孝一卡通合约》</a></span>
+    </div>
     <div class="m-bottom">
       <div class="m-b-l"> ￥{{count()}}</div>
-      <button class="m-b-r" @click="gonext(pagef_data.orderno,page_data.scorecost)">立即购买</button>
+      <button class="m-dis" @click="gonext(pagef_data.orderno)" id="btn" disabled="disabled">立即购买</button>
     </div>
   </div>
 </template>
@@ -62,11 +59,21 @@ export default {
   created(){
     // console.log('商品详情id:'+this.$route.query.id);
     this.getDataList();
-   
+    this.check()
   },
   // 预编译
 
   methods: {
+    check(){
+            if($("input[type='checkbox']").is(':checked')){
+                $('#btn').removeClass('m-dis');
+                $('#btn').addClass('m-b-r');
+                $('#btn').removeAttr('disabled','disabled');
+            }else{
+                $('#btn').addClass('m-dis');
+                $('#btn').attr('disabled','disabled');
+            }
+    },
     count(){
   return this.num*this.page_data.money;
 },
@@ -121,9 +128,8 @@ state: ""
             this.pagef_data=res.data.data
             let a=this.pagef_data.orderno
             let b=this.pagef_data.money
-             
-             this.$router.push({
-        path:"/webbuynew",
+            this.$router.push({
+        path:"/webbuy",
         query:{
          orderNo:a,
          money:b,
@@ -175,13 +181,10 @@ state: ""
     onClickLeft() {
       this.$router.back("Market");
     },
-    
+    goa(){
+      this.$router.push("webbuynew");
+    }
     },
-
-  
-    
-  
-    
   }
 
 </script>
@@ -233,15 +236,24 @@ state: ""
 
 .m-bottom{
   background: white;
-  height: 8%;
+  height: 7%;
   position: fixed;
   bottom: 0;
   margin-bottom: 0;
   width: 100%;
 }
 
+.m-check{
+  background: white;
+  height: 3%;
+  position: fixed;
+  bottom: 7%;
+  width: 100%;
+  padding-top: 0.1rem;
+  font-size: 0.28rem;
+}
+
 .m-b-l{
- 
   float: left;
   font-size: 0.45rem;
   color: #00a2ff;
@@ -261,12 +273,22 @@ state: ""
   width: 40%;
   margin-right: 0
 }
+
+.m-dis{
+  float: right;
+  background-color: #5fc0f8;
+  color: white;
+  font-size: 0.35rem;
+  height: 100%;
+  width: 40%;
+  margin-right: 0;
+}
+
 .m-header {
   height: 1rem;
   line-height: 1rem;
   color: rgb(7, 7, 7);
   font-size: 0.4rem;
-  background-image: ;
 }
 
 .m-header-icon {
@@ -274,6 +296,9 @@ state: ""
   top: 0.3rem;
   left: 0.2rem;
   font-size: 0.5rem;
+}
+a{
+  color: red
 }
 </style>
 
