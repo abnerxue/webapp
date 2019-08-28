@@ -492,18 +492,18 @@ export default {
       this.options2 = {
         backgroundColor: "#21202D",
         legend: {
-          data: ["dea", "dif", "macd"],
+          data: ["DEA", "DIF", "MACD"],
           inactiveColor: "#777",
           textStyle: {
             color: "#fff"
           },
           formatter: function(name) {
             if (that.rawData.length > 0) {
-              if (name === "dea")
+              if (name === "DEA")
                 return name + "：" + that.dea[that.dea.length - 1];
-              if (name === "dif")
+              if (name === "DIF")
                 return name + "：" + that.dif[that.dif.length - 1];
-              if (name === "macd")
+              if (name === "MACD")
                 return name + "：" + that.macd[that.macd.length - 1];
             }
             return name;
@@ -549,7 +549,7 @@ export default {
         animation: true,
         series: [
           {
-            name: "dea",
+            name: "DEA",
             type: "line",
             data: this.dea,
             smooth: true,
@@ -561,7 +561,7 @@ export default {
             }
           },
           {
-            name: "dif",
+            name: "DIF",
             type: "line",
             data: this.dif,
             smooth: true,
@@ -573,7 +573,7 @@ export default {
             }
           },
           {
-            name: "macd",
+            name: "MACD",
             type: "line",
             data: this.macd,
             smooth: true,
