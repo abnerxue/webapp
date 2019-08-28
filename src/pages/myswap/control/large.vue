@@ -175,8 +175,6 @@ export default {
   methods: {
     onload() {
       this.chart = echarts.init(document.getElementById("char"));
-      console.log("处理好的数据");
-      console.log(this.rawData);
       this.datas = this.rawData.map(function(item) {
         return item[0];
       });
@@ -188,8 +186,6 @@ export default {
       this.ma20 = this.calculateMA(20, this.data);
       this.ma40 = this.calculateMA(40, this.data);
       let that = this;
-      console.log("日K数据");
-      console.log(this.data);
       this.options = {
         backgroundColor: "#21202D",
         legend: {
