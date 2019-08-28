@@ -1,0 +1,33 @@
+{
+    "data":[{
+            "id":"123456",
+            "title":"cbc",
+            "date":"2018-06-05",
+            "time":"12:12:12",
+            "place":"606",
+            "speaker":"李四",
+            "content":"社会主义核心价值观",
+            "imgUrl":"http://img0.imgtn.bdimg.com/it/u=229264935,476783337&fm=26&gp=0.jpg"
+        },{
+            "id":"123456sadad",
+            "title":"vsd",
+            "date":"2018-06-05",
+            "time":"12:12:12",
+            "place":"606",
+            "speaker":"李四",
+            "content":"社会主义核心价值观",
+            "imgUrl":"http://img0.imgtn.bdimg.com/it/u=229264935,476783337&fm=26&gp=0.jpg"
+        },{
+            "id":"123456dawd",
+            "title":"qwe",
+            "date":"2018-06-05",
+            "time":"12:12:12",
+            "place":"606",
+            "speaker":"李四",
+            "content":"社会主义核心价值观",
+            "imgUrl":"http://img0.imgtn.bdimg.com/it/u=229264935,476783337&fm=26&gp=0.jpg"
+        }],
+    "code":0,
+    "result":true,
+    "msg":"成功！"
+}

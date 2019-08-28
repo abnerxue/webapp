@@ -1,0 +1,15 @@
+.van-address-list .van-icon-checked{
+    color: #00a2ff
+}
+
+.van-address-list .van-button--danger{
+    background:  #00a2ff;
+    border: 1px solid #00a2ff;
+}
+
+.van-dialog__message {
+    
+    font-size: 20px;
+    
+}
+
