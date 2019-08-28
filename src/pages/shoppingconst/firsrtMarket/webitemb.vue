@@ -298,7 +298,7 @@ state: ""
   font-size: 0.5rem;
 }
 a{
-  color: red
+  color:#00a2ff
 }
 </style>
 
