@@ -73,6 +73,7 @@ export default {
           utime: null
         }
       ];
+      // http://192.168.0.194:8080/cxt/oa/approval
       this.$ajax
         .post("/cxt/oa/dept/detail", _this.$qs.stringify(data), {
           headers: _this.Base.initAjaxHeader(1, data)
