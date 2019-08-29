@@ -196,7 +196,7 @@ export default {
       console.log(name);
     },
     goback() {
-      this.$router.push("/home");
+      this.$router.push("/myswap");
     },
     top() {
       window.scrollTo(0, 0);
