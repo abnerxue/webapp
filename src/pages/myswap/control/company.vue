@@ -52,7 +52,7 @@ export default {
     },
     onClickLeft() {
       // this.$router.push({path:'/large?stage='+this.mess})
-      this.$router.back("/myswap");
+      this.$router.push("/myswap");
     },
     getcompany(code, type) {
       this.$ajax.post("/cxt/currency/list").then(res => {
