@@ -78,7 +78,6 @@ export default {
               dptname: this.$route.query.dptname,
               coname: this.$route.query.coname,
               pId:this.$route.query.pId,
-              
             }
       });
       },
@@ -130,7 +129,6 @@ export default {
               dptname: this.$route.query.dptname,
               coname: this.$route.query.coname,
               pId:this.$route.query.pId,
-              
             }
           });
         });

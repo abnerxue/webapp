@@ -8,22 +8,14 @@
       <van-col span="2">
         <van-icon name="cross" class="m-header-icon2" @click="gofirst" />
       </van-col>
-      <van-col span="14">我发起的</van-col>
+      <van-col span="14">我审批的</van-col>
       <van-col span="5">
         <div style="color:#00a2ff;font-size:0.35rem;">帮助</div>
       </van-col>
+      
     </van-row>
-    <van-row style="text-align:center;margin-top:1rem">
-        <van-col span="12">
-            <van-button icon="search" style="border:none">搜索</van-button>
-        </van-col>
-        <van-col span="12" >
-            <van-button icon="filter-o" style="border:none">筛选</van-button>
-        </van-col>
-    </van-row>
-    <hr>
 
-    <div v-for="(item,index) in pagemember" :key="index" @click="godetail(item.ctime,item.approvalName,item.content,item.approvalSn,item.username,item.state,item.department)">
+    <div v-for="(item,index) in pagemember" :key="index" style="margin-top:1rem">
       <van-row class="main">
         <van-col span="6">
           <div class="round">
@@ -40,7 +32,10 @@
         <van-col span="4" class="b">{{item.ctime.slice(11,16)}}</van-col>
       </van-row>
     </div>
-
+    <!-- <van-tabs v-model="active" color="#00a2ff" style="margin-top:1rem;">
+        <van-tab title="全部">内容 1</van-tab>  
+        <van-tab title="未读">内容 2</van-tab>
+    </van-tabs> -->
   </div>
 </template>
 <script>
@@ -50,9 +45,8 @@ Vue.prototype.GLOBAL = global_; //挂载到Vue实例上面
 export default {
   data() {
     return {
-      pagemember:[],
-      statename:'',
-      userId:""
+      active: 0,
+      pagemember:[]
     };
   },
   methods: {
@@ -68,22 +62,23 @@ export default {
     goback() {
       this.$router.push("/approval");
     },
-    top(){
-      window.scrollTo(0,0)
+    top() {
+      window.scrollTo(0, 0);
     },
     getList() {
       let _this = this;
       let data = {
-        token:this.GLOBAL.token
+        token:this.GLOBAL.token,
+        type:"0"
       };
 
       this.$ajax
-        .post("/cxt/oa/approval/approvals", _this.$qs.stringify(data), {
+        .post("/cxt/oa/approval/ccApprovals", _this.$qs.stringify(data), {
           headers: _this.Base.initAjaxHeader(1, data)
         })
         .then(res => {
           this.pagemember = res.data.data.list;
-          console.log(this.pagemember);
+          // console.log(this.pagemember);
           for(let i =0 ; i<this.pagemember.length;i++){
             if(this.pagemember[i].state==0){
             this.pagemember[i].statename="待审批"
@@ -100,21 +95,6 @@ export default {
             this.pagemember[i].str=JSON.parse(this.pagemember[i].content)
           }
         });
-    },
-    godetail(ctime,approvalName,content,approvalSn,username,state,department){
-      this.$router.push({
-        path:"idetail",
-        query:{
-          ctime:ctime,
-          approvalSn:approvalSn,
-          approvalName:approvalName,
-          content:content,
-          username:username,
-          state:state,
-          department:department
-        },
-      })
-      // console.log(department)
     }
   },
   created() {

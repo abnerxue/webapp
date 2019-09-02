@@ -28,6 +28,7 @@ const approval = () => import('@/pages/Structure/work/approval.vue') //
 const send = () => import('@/pages/Structure/work/send.vue') //
 const isend = () => import('@/pages/Structure/work/isend.vue') //
 const idetail = () => import('@/pages/Structure/work/idetail.vue') //
+const approvalofme = () => import('@/pages/Structure/work/approvalofme.vue') //
 
 const choose = () => import('@/pages/Structure/send/choose.vue') //
 const choosed = () => import('@/pages/Structure/send/choosed.vue') //
@@ -290,6 +291,14 @@ export default [
         path: '/idetail',
         name: 'idetail',
         component: idetail,
+        meta:{
+            title:' '
+        },
+    },
+    {
+        path: '/approvalofme',
+        name: 'approvalofme',
+        component: approvalofme,
         meta:{
             title:' '
         },

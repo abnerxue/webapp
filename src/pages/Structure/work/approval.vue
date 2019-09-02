@@ -174,6 +174,9 @@ export default {
     goc(){
       this.$router.push('/send')
     },
+    god(){
+      this.$router.push('/approvalofme')
+    },
     getList() {
       let _this = this;
       let data = {
