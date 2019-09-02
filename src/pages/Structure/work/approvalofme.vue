@@ -15,7 +15,7 @@
       
     </van-row>
 
-    <div v-for="(item,index) in pagemember" :key="index" style="margin-top:1rem">
+    <div v-for="(item,index) in pagemember" :key="index" style="margin-top:1rem" @click="gonext(item.id)">
       <van-row class="main">
         <van-col span="6">
           <div class="round">
@@ -95,6 +95,14 @@ export default {
             this.pagemember[i].str=JSON.parse(this.pagemember[i].content)
           }
         });
+    },
+    gonext(id){
+      this.$router.push({
+        path:"/details",
+        query:{
+          id:id
+        }
+      })
     }
   },
   created() {

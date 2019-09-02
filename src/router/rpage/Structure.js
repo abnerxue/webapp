@@ -29,6 +29,7 @@ const send = () => import('@/pages/Structure/work/send.vue') //
 const isend = () => import('@/pages/Structure/work/isend.vue') //
 const idetail = () => import('@/pages/Structure/work/idetail.vue') //
 const approvalofme = () => import('@/pages/Structure/work/approvalofme.vue') //
+const details= () => import('@/pages/Structure/work/details.vue') //
 
 const choose = () => import('@/pages/Structure/send/choose.vue') //
 const choosed = () => import('@/pages/Structure/send/choosed.vue') //
@@ -299,6 +300,14 @@ export default [
         path: '/approvalofme',
         name: 'approvalofme',
         component: approvalofme,
+        meta:{
+            title:' '
+        },
+    },
+    {
+        path: '/details',
+        name: 'details',
+        component: details,
         meta:{
             title:' '
         },

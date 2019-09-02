@@ -14,8 +14,8 @@
       <van-row style="text-align:center;margin:0.3rem 0.5rem">
         <van-col span="1"></van-col>
       <van-col span="6">
-        <van-icon name="stop-circle-o" class="main-icon"/>
-        <p>我审批的</p>
+        <van-icon name="stop-circle-o" class="main-icon" @click="god"/>
+        <p @click="god">我审批的</p>
       </van-col>
       <van-col span="2"></van-col>
       <van-col span="6">
@@ -155,7 +155,7 @@ export default {
       this.$router.push('/generalapproval')
     },
     goback(){
-      this.$router.push('/work')
+      this.$router.back('/work')
     },
     top(){
       window.scrollTo(0,0)

@@ -23,7 +23,7 @@
     </van-row>
     <hr>
 
-    <div v-for="(item,index) in pagemember" :key="index" @click="godetail(item.ctime,item.approvalName,item.content,item.approvalSn,item.username,item.state,item.department)">
+    <div v-for="(item,index) in pagemember" :key="index" @click="godetail(item.id)">
       <van-row class="main">
         <van-col span="6">
           <div class="round">
@@ -101,20 +101,13 @@ export default {
           }
         });
     },
-    godetail(ctime,approvalName,content,approvalSn,username,state,department){
+    godetail(id){
       this.$router.push({
         path:"idetail",
         query:{
-          ctime:ctime,
-          approvalSn:approvalSn,
-          approvalName:approvalName,
-          content:content,
-          username:username,
-          state:state,
-          department:department
+          id:id
         },
       })
-      // console.log(department)
     }
   },
   created() {

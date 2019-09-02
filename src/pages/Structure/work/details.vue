@@ -82,18 +82,29 @@
     </div>
     <br><br>
     <div class="grey"></div>
-    <div>
-      <p class="a" style="margin-top:0.2rem">&nbsp;&nbsp;抄送人<span class="bb">&nbsp;审批通过后，通知抄送人</span></p>
-      <div v-for="(cc,indexs) in pagemember.ccProcess" :key="indexs">
-        <div class="contain">
-          <div class="ccround">
-          {{cc.username.slice(-1)}}
-        </div>
-          <div style="font-size:0.3rem;color:black">
-            {{cc.username}}
-          </div>
-        </div>
-      </div>
+    <div class="foot">
+      <van-row style="text-align:center">
+          <van-col span="1"></van-col>
+          <van-col span="4">
+              <van-icon name="close"  class="icon"/>
+              <p style="font-size:0.25rem">催办</p>
+          </van-col>
+          <van-col span="4">
+              <van-icon name="close" class="icon"/>
+              <p style="font-size:0.25rem">撤销</p>
+          </van-col>
+          <van-col span="4">
+              <van-icon name="close" class="icon"/>
+              <p style="font-size:0.25rem">更多</p>
+          </van-col>
+          <van-col span="5">
+              <button class="btn-a">拒绝</button>
+          </van-col>
+          <van-col span="5">
+              <button class="btn-b">同意</button>
+          </van-col>
+          <van-col span="1"></van-col>
+      </van-row>
     </div>
   </div>
 </template>
@@ -116,7 +127,7 @@ export default {
       this.$router.push("/work");
     },
     goback() {
-      this.$router.push("/isend");
+      this.$router.push("/approvalofme");
     },
     top(){
       window.scrollTo(0,0)
@@ -124,10 +135,10 @@ export default {
     getList(){
       let _this=this
       let data = {
-        id:this.$route.query.id,
-        token:this.GLOBAL.token
+        token:this.GLOBAL.token,
+        approvalId:this.$route.query.id
       }
-      this.$ajax.post("/cxt/oa/approval/index", _this.$qs.stringify(data), {
+      this.$ajax.post("/cxt/oa/approval/approvalInfo", _this.$qs.stringify(data), {
           headers: _this.Base.initAjaxHeader(1, data)
         })
         .then(res => {
@@ -269,5 +280,38 @@ export default {
   padding: 0.2rem ;
   display: inline-block;
   text-align: center;
+}
+
+.foot{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 1.1rem;
+    padding-top:0.3rem
+}
+
+.btn-a{
+    color: #00a2ff;
+    background-color: white;
+    font-size: 0.3rem;
+    width:1.6rem;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    border: 0.02rem solid #bcbcbc;
+    margin-top:0.2rem
+}
+.btn-b{
+    color: white;
+    background-color: #00a2ff;
+    font-size: 0.3rem;
+    width:1.6rem;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    border: 0.02rem solid #bcbcbc;
+    margin-top:0.2rem
+}
+
+.icon{
+    font-size:0.5rem
 }
 </style>
