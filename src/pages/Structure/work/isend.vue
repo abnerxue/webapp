@@ -31,7 +31,7 @@
           </div>
         </van-col>
         <van-col span="14">
-          <div class="a">提交的{{item.approvalName}}</div>
+          <div class="a">{{item.username}}提交的{{item.approvalName}}</div>
           <div class="b">申请内容：{{item.str.contentOfApplication}}</div>
           <div class="b">申请详情：{{item.str.detailsOfApproval}}</div>
           <div class="c">{{item.statename}}</div>
