@@ -53,7 +53,7 @@
             {{this.pagemember.username.slice(-1)}}
           </div>
         </van-col>
-        <van-col span="11" class="aa">我&nbsp;&nbsp;发起申请</van-col>
+        <van-col span="11" class="aa">{{this.pagemember.username}}&nbsp;&nbsp;发起申请</van-col>
         <van-col span="3" class="d"></van-col>
         <van-col span="4" class="d"></van-col>
       </van-row>
@@ -67,7 +67,7 @@
         <van-col span="11" class="aa">
             {{item.username}}&nbsp;&nbsp;<span style="color: #02b638">{{item.statename}}</span>
         </van-col>
-        <van-col span="3" class="d"></van-col>
+        <van-col span="3" class="d">{{item.ctime.slice(-1)}}</van-col> <!-- shijian  -->
         <van-col span="4" class="d"></van-col>
       </van-row>
 
@@ -98,10 +98,10 @@
               <p style="font-size:0.25rem">更多</p>
           </van-col>
           <van-col span="5">
-              <button class="btn-a">拒绝</button>
+              <button class="btn-a" @click="agree">拒绝</button>
           </van-col>
           <van-col span="5">
-              <button class="btn-b">同意</button>
+              <button class="btn-b" @click="reject">同意</button>
           </van-col>
           <van-col span="1"></van-col>
       </van-row>
@@ -119,7 +119,7 @@ export default {
       detailsOfApproval:'',
       content:'',
       str:'',
-      pagemember:''
+      pagemember:'',
     };
   },
   methods: {
@@ -165,7 +165,34 @@ export default {
             }
           }
         });
-        
+    },
+    agree(){
+      let _this=this
+      let data = {
+        token:this.GLOBAL.token,
+        id:this.$route.query.id,
+        state:0
+      }
+      this.$ajax.post("/cxt/oa/approval/commit", _this.$qs.stringify(data), {
+          headers: _this.Base.initAjaxHeader(1, data)
+        })
+        .then(res => {
+          
+        });
+    },
+    reject(){
+      let _this=this
+      let data = {
+        token:this.GLOBAL.token,
+        id:this.$route.query.id,
+        state:1
+      }
+      this.$ajax.post("/cxt/oa/approval/commit", _this.$qs.stringify(data), {
+          headers: _this.Base.initAjaxHeader(1, data)
+        })
+        .then(res => {
+          
+        });
     }
     
   },
