@@ -24,7 +24,7 @@ const account = () => import('@/pages/myswap/account/account.vue')        // 即
 const myaccount = () => import('@/pages/myswap/account/myaccount.vue')        // 即时转账
 const ctrlload = () => import('@/pages/myswap/control/ctrlload.vue')        // 风险控制
 const statistics = () => import('@/pages/myswap/control/statistics.vue')        // 风险统计
-
+const search = () => import('@/pages/myswap/control/search.vue')        // 风险统计
 const abnormal = () => import('@/pages/myswap/control/abnormal.vue')        // 异常
 const trade = () => import('@/pages/myswap/control/trade.vue')        // 异常
 const price = () => import('@/pages/myswap/control/price.vue')        // 价格
@@ -632,6 +632,14 @@ export default [
     path: '/dtbenefit',   //
     name: 'dtbenefit',
     component: dtbenefit,
+    meta: {
+      title: ''
+    },
+  },
+  {
+    path: '/search',   //
+    name: 'search',
+    component: search,
     meta: {
       title: ''
     },

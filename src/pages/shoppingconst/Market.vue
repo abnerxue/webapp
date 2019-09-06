@@ -75,10 +75,10 @@
                     </tr>
                     <tr>
                       <td>
-                        <van-button type="default" class="m-button-one" @click='buycxt'>批发常孝通</van-button>
+                        <van-button type="default" class="m-button-one" @click='gowebfrom'>转入文交所</van-button>
                       </td>
                       <td>
-                        <van-button type="default" class="m-button-two" @click="gowebfrom">转出常孝通</van-button>
+                        <van-button type="default" class="m-button-two" @click="gocompany">交易入口</van-button>
                       </td>
                     </tr>
                   </table>
@@ -488,6 +488,9 @@ parseArr: function (arr) {
          
       //   }
       // });
+    },
+    gocompany(){
+      this.$router.push('/company')
     }
     
   
@@ -607,6 +610,7 @@ parseArr: function (arr) {
   color: #00a2ff;
   background-color: #edf8ff;
   border: none;
+  width: 2.4rem
 }
 
 .m-button-two {
@@ -615,6 +619,7 @@ parseArr: function (arr) {
   color: white;
   background-color: #00a2ff;
   border: none;
+  width: 2.4rem
 }
 
 .m-pa {
