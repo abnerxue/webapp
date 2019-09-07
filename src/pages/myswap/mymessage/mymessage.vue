@@ -132,15 +132,9 @@ export default {
      onLoad() {
       console.log('adaw');
       // 异步更新数据
-      setTimeout(() => {
-        // for (let i = 0; i < 10; i++) {
-        //   this.list.push(this.list.length + 1);
-        // }
-
-
-               let data ={
+     let data ={
                    token:this.GLOBAL.token,
-                  usertoken: localStorage.getItem('token'),
+                  // usertoken: localStorage.getItem('token'),
                   	page: this.pageNumber, //当前页 默认0,回调之前会加1; 即callback(page)会从1开始
 					          size: 20
               };
@@ -154,11 +148,17 @@ export default {
                this.$ajax.post('/cxt/market/top/deals', _this.$qs.stringify(data), {
           headers: _this.Base.initAjaxHeader(1, data)
         }).then(res => { 
-              _this.uplists=res.data.data.list
+              _this.listss=res.data.data.list
               console.log( _this.uplists)
-               let arr = _this.uplists
-               console.log(arr);
-               if(arr&&arr.length>0){
+               
+               if (_this.listss.length != _this.size * _this.page) {
+              _this.finished = true;
+              _this.loading = false;
+            } else {
+              _this.page++;
+              _this.loading = false;
+            }
+               /* if(arr&&arr.length>0){
                  _this.pageNumber++;
                }else{
                console.log('no_data!!');
@@ -169,7 +169,7 @@ export default {
         
               _this.listss = _this.listss.concat(arr)
               // 加载状态结束
-              this.loading = false;
+              this.loading = false; */
 
               // 数据全部加载完成
               // if (this.list.length >= 40) {
@@ -178,7 +178,7 @@ export default {
               }
         });
 
-      }, 500);
+     
     },
     onLoad_() {
       console.log('adaw');
