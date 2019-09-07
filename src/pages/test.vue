@@ -18,7 +18,7 @@
         <li>一次性获赠12万元产品</li>
         <li>可获得{{page_data.rstock}}个常孝通版通</li>
         <li>可获{{page_data.rscore}}积分用于三级市场消费</li>
-        <li>一定额度一级版通批发配额资格</li>
+        <li>一定额度一级版通批77888发配额资格</li>
       </ul>
     </div>
    <!--  <van-submit-bar :price="35000000" button-text="立即购买" @submit="onSubmit"  /> -->
