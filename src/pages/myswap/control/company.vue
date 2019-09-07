@@ -4,15 +4,16 @@
       <van-col span="2">
         <van-icon name="arrow-left" class="s-header-iconas" @click="onClickLeft" />
       </van-col>
-      <van-col span="20" style="text-align:center;color:#ffffff;">主力合约</van-col>
-      <van-col span="2"></van-col>
+      <van-col span="18" style="color:#ffffff;">拍品汇总</van-col>
+      <van-col span="2"><van-icon name="search" @click="gosearch"/></van-col>
+      <van-col span="2"><van-icon name="star-o"/></van-col>
     </van-row>
     <table class="list_li" cellspacing="0" cellpadding="0">
       <tr>
         <th>名称</th>
         <th>最新</th>
         <th @click="list3=list3=='涨跌'?'涨幅%':'涨跌'">{{list3}}</th>
-        <th>持仓量</th>
+        <th>流拍量</th>
       </tr>
       <tr v-for="(init,index) in company_init" :key="index" @click="fff(init.code)">
         <td style="height: 0.6rem;">
@@ -52,13 +53,16 @@ export default {
     },
     onClickLeft() {
       // this.$router.push({path:'/large?stage='+this.mess})
-      this.$router.push("/myswap");
+      this.$router.push("/Market");
     },
     getcompany(code, type) {
       this.$ajax.post("/cxt/currency/list").then(res => {
         console.log(res.data.data);
         this.company_init = res.data.data;
       });
+    },
+    gosearch(){
+      this.$router.push('/search')
     }
   },
   mounted() {
@@ -75,6 +79,7 @@ export default {
   color: #aaaaaa;
   height: 0.6rem;
   background: #323233;
+  font-size: 0.3rem
 }
 .list_li a {
   font-size: 0.3rem;

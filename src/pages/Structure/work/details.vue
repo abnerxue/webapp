@@ -67,7 +67,7 @@
         <van-col span="11" class="aa">
             {{item.username}}&nbsp;&nbsp;<span style="color: #02b638">{{item.statename}}</span>
         </van-col>
-        <van-col span="3" class="d">{{item.ctime.slice(5,9)}}</van-col> <!-- shijian  -->
+        <van-col span="3" class="d"></van-col> <!-- shijian  -->
         <van-col span="4" class="d"></van-col>
       </van-row>
 
