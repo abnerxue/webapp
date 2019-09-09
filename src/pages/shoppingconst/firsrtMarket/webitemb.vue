@@ -35,7 +35,7 @@
     </div>
     <div class="m-bottom">
       <div class="m-b-l"> ￥{{count()}}</div>
-      <button class="m-dis"  id="btn" @click="gonext(pagef_data.orderno)">立即购买</button>
+      <button class="m-dis"  id="btn" @click=" check()">立即购买</button>
     </div>
   </div>
 </template>
@@ -70,7 +70,7 @@ export default {
                 $('#btn').addClass('m-b-r');
                 // $('#btn').removeAttr('disabled','disabled');
                 $('#btn').click(function(){
-                  
+                  gonext(pagef_data.orderno)
                 });
             }else{
                 $('#btn').addClass('m-dis');
