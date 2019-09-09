@@ -29,7 +29,7 @@
   </div>
       
     </div>
-    <div class="m-check"  >
+    <div class="m-check"  v-if="this.$route.query.kind == 6">
       <input type="checkbox" id="icheck" style="position:absolute;top:0.15rem;left:0.4rem" @click="check">
       <span style="position:absolute;top:0.05rem;left:0.8rem">已阅读并同意<a @click="goa">《常孝一卡通合约》</a></span>
     </div>
