@@ -29,13 +29,13 @@
   </div>
       
     </div>
-    <div class="m-check"  >
+    <div class="m-check"  v-if="this.$route.query.kind == 6">
       <input type="checkbox" id="icheck" style="position:absolute;top:0.15rem;left:0.4rem" @click="check">
       <span style="position:absolute;top:0.05rem;left:0.8rem">已阅读并同意<a @click="goa">《常孝一卡通合约》</a></span>
     </div>
     <div class="m-bottom">
       <div class="m-b-l"> ￥{{count()}}</div>
-      <button class="m-dis"  id="btn" @click="check()">立即购买</button>
+      <button class="m-dis"  id="btn" @click="gonext()">立即购买</button>
     </div>
   </div>
 </template>
@@ -64,39 +64,10 @@ export default {
   // 预编译
 
   methods: {
-    check(){
-            if($("input[type='checkbox']").is(':checked')){
-                $('#btn').removeClass('m-dis');
-                $('#btn').addClass('m-b-r');
-                $('#btn').click(function(){
-                  gonext(pagef_data.orderno)
-                });
-            }else{
-                $('#btn').addClass('m-dis');
-                $('#btn').click(function(){
-                  Toast('您还未阅读协议，请先阅读协议');
-                  console.log(123)
-                  return
-                });
-            }
+    test(){
+     Toast(666)
     },
-    count(){
-  return this.num*this.page_data.money;
-},
-     num_plus(){
-        // console.log(555);
-        this.num++;
-        this.totle_price = this.num*this.page_data.money;
-      },
-      num_minus(){
-        // console.log(555);
-        if(this.num<=0){
-          return;
-        }
-        this.num--;
-        this.totle_price = this.num*this.page_data.money;
-      },
-      gonext(scorecost){
+        gonext(){
          let _this=this
       this.pagef_data = {
            amount: 0,
@@ -151,6 +122,44 @@ state: ""
       
         });
       },
+    check(){
+            if($("#icheck").is(':checked')){
+                $('#btn').removeClass('m-dis');
+                $('#btn').addClass('m-b-r');
+                
+                
+                 
+                
+                
+                
+            }else{
+                $('#btn').addClass('m-dis');
+                  $('#btn').addClass('m-dis');
+                $('#btn').click(function(){
+
+                  Toast('您还未阅读协议，请先阅读协议');
+                  console.log(123)
+                  return
+                });
+            }
+    },
+    count(){
+  return this.num*this.page_data.money;
+},
+     num_plus(){
+        // console.log(555);
+        this.num++;
+        this.totle_price = this.num*this.page_data.money;
+      },
+      num_minus(){
+        // console.log(555);
+        if(this.num<=0){
+          return;
+        }
+        this.num--;
+        this.totle_price = this.num*this.page_data.money;
+      },
+  
         getDataList(){
           
       let _this=this
