@@ -196,8 +196,8 @@ export default {
                 validation:_this.smsm,
                 type:'password',
                 ctime:''
-                };                    
-
+                };
+                console.log(data)
                 this.$ajax.post('/cxt/base/login',_this.$qs.stringify(data),{
                     headers: _this.Base.initAjaxHeader(1,data)
                 }).then(res=>{

@@ -151,6 +151,15 @@ parseArr: function (arr) {
         });
     },
     setcoler(){
+             console.log(this.GLOBAL.systemName)
+    if(this.GLOBAL.systemName==='android'){
+       
+       window.android.setStatusBarColor("#ededed");
+    }
+    if(this.GLOBAL.systemName==='ios'){
+  
+       window.webkit.messageHandlers.setStatusBarColor.postMessage("#ededed");
+    }
       // setStatusBarFontColor(BLACK);
       // setStatusBarColor(GRAY);
 

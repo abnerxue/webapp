@@ -142,6 +142,7 @@
             };
         </script>
 <script>
+import { Dialog } from 'vant';
 import { Toast } from 'vant';
 import Vue from 'vue'
 import global_ from '../global'//引用文件
@@ -314,11 +315,36 @@ parseArr: function (arr) {
       this.$ajax.post('/cxt/relation/bind', _this.$qs.stringify(data), {
           headers: _this.Base.initAjaxHeader(1, data)
         }).then(res => {
-          Toast('绑定成功')
+          Toast(res.data.state)
+          if(res.data.state==='012'){
+           Dialog.confirm({
+           title: '后台管理系统',
+          message: '请确认是否登录'
+                }).then(() => {
+                    let data = {
+         token:this.GLOBAL.token,
+         code:b,
+      };     
+      this.$ajax.post('/cxt/manager/login', _this.$qs.stringify(data), {
+          headers: _this.Base.initAjaxHeader(1, data)
+        }).then(res => {
+              if(res.data.state==='000'){
+                Toast('登录成功')
+              }
+        })
+  // on confirm
+               }).catch(() => {
+  // on cancel
+                });
+          }
+          if(res.data.state==='012'){
+              Toast('绑定成功')
           // this.tf=res.data.data
          
           var obj = $(".testp");
         obj.text('扫成功');
+          }
+          
         
            
         });
