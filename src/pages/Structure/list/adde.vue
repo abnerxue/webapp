@@ -300,7 +300,11 @@ export default {
       //   Toast("请填写正确的手机号！");
       //   return false;
       // }
-
+      for(let i=0;i<this.pageDatab.length-1;i++){
+        if(this.pageDatab[i].name==this.value2){
+          this.department_id=this.pageDatab[i].id;
+        }
+      }
       this.show1 = true;
       let _this = this;
       let data = {
@@ -315,7 +319,7 @@ export default {
         office:this.office,
         email:this.email,
         staff_no:this.staff_no,
-        department_id: this.$route.query.dptid
+        department_id: this.department_id
       };
       console.log(data.department_id);
 
