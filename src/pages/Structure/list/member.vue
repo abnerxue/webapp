@@ -36,7 +36,7 @@
         <div @click="gochildmember(item.id,item.name)">
           <div class="d" >
           {{item.name}} 
-          <span class="b" >({{item.des}})</span>
+          <span class="b" ></span>
           <van-icon name="arrow" class="c"/>
         </div>
         <hr style="margin:0.2rem 5%;width:90%" />
@@ -266,18 +266,6 @@ export default {
               id: this.pageDatab[i].id
             };
             // console.log(data.id);
-            
-            this.$ajax
-              .post("/cxt/oa/member/dept", _this.$qs.stringify(data), {
-                headers: _this.Base.initAjaxHeader(1, data)
-              })
-              .then(res => {
-                this.pagemember = res.data.data;
-                // this.pageDatab[i].num=this.pagemember.length;
-                // this.pageDatab[i].name=this.pageDatab[i].name +"   "+ "<span style='color:#bcbcbc'>"+"("+this.pagemember.length+")"+"</span>"
-                this.pageDatab[i].des = this.pagemember.length
-              });
-              
           };
           this.pageData=this.pageDatab
           

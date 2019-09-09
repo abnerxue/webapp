@@ -240,14 +240,13 @@ export default {
       this.showPicker2 = false;
     },
     onSave() {
-      // let self = this;
-      // let reg = /^1(3|4|5|7|8)\d{9}$/;
-      // if (reg.test(self.phone)) {
-      //   return true;
-      // }else{
-      //   Toast("请填写正确的手机号！");
-      //   return false;
-      // }
+      let self = this;
+            let telreg=/^[1][0-9]{10}$/;
+            let myreg=/^[\S]{6,20}$/;
+            if(!telreg.test(self.tel)){
+                Toast('手机号格式错误！');
+                return
+            }
       for(let i=0;i<this.pageDatab.length-1;i++){
         if(this.pageDatab[i].name==this.value2){
           this.department_id=this.pageDatab[i].id;
@@ -292,14 +291,13 @@ export default {
       // console.log(this.bank);
     },
     onSave2() {
-      // let self = this;
-      // let reg = /^1(3|4|5|7|8)\d{9}$/;
-      // if (reg.test(self.phone)) {
-      //   return true;
-      // }else{
-      //   Toast("请填写正确的手机号！");
-      //   return false;
-      // }
+      let self = this;
+            let telreg=/^[1][0-9]{10}$/;
+            let myreg=/^[\S]{6,20}$/;
+            if(!telreg.test(self.tel)){
+                Toast('手机号格式错误！');
+                return
+            }
       for(let i=0;i<this.pageDatab.length-1;i++){
         if(this.pageDatab[i].name==this.value2){
           this.department_id=this.pageDatab[i].id;

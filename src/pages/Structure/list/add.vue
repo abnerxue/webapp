@@ -180,14 +180,13 @@ export default {
       this.showPicker = false;
     },
     onSave() {
-      // let self = this;
-      // let reg = /^1(3|4|5|7|8)\d{9}$/;
-      // if (reg.test(self.phone)) {
-      //   return true;
-      // }else{
-      //   Toast("请填写正确的手机号！");
-      //   return false;
-      // }
+      let self = this;
+            let telreg=/^[1][0-9]{10}$/;
+            let myreg=/^[\S]{6,20}$/;
+            if(!telreg.test(self.tel)){
+                Toast('手机号格式错误！');
+                return
+            }
       let _this = this;
       let data = {
         token: this.GLOBAL.token,
@@ -227,14 +226,13 @@ export default {
       // console.log(this.bank);
     },
     onSave2() {
-      // let self = this;
-      // let reg = /^1(3|4|5|7|8)\d{9}$/;
-      // if (reg.test(self.phone)) {
-      //   return true;
-      // }else{
-      //   Toast("请填写正确的手机号！");
-      //   return false;
-      // }
+      let self = this;
+            let telreg=/^[1][0-9]{10}$/;
+            let myreg=/^[\S]{6,20}$/;
+            if(!telreg.test(self.tel)){
+                Toast('手机号格式错误！');
+                return
+            }
 
       this.show1 = true;
       let _this = this;
