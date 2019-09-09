@@ -17,7 +17,7 @@
       深圳文化产权交易所
       文化产业板挂牌公告
     </h2>
-    <div style="height:2.6rem;">
+    <div >
       <img src="../../../static/img/lba.png" />
     </div>
     <van-row style="margin-top:0.3rem">
@@ -47,7 +47,46 @@
     <!--  <div class="testp">能进ios么？</div>  -->
   </div>
 </template>
-<script>
+<script>                                                                                      
+//                                                        ]/@@@O\]]       
+//               ]]    .]]]]]]]]]]]OO@@@@@@@@@OOOOOOOOOO@@@@O@@@@@@@@@@@@`   
+//      ]@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@\  
+//    =@@@@@@@@@@@@O@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@O@@` 
+//   =@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@^ 
+//  =@O@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@^ 
+//  @@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@  
+// =@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@^  
+// =@@@@@@@@@@@@@O@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@   
+// O@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@OOOOOOOOO@@@@@@/    
+// @@@@@@@@@@@@@@OOOOO@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@OOOOOOOOOOOOO\     
+// @@@@@@@@@@@OOOOOOOO@@@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@     
+// \@@@O[@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@^    
+//      =@OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO@^    
+//      =OOOOOOOOOOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@OOOOOOOOOOOOOOOOOOOOOOOO\    
+//      @OOOOOOOOOOOOOOOOOOOOOOO@@@@O@@@@@@@@@@@@@@@@OOOOOOOOOOOOOOOOOOO@    
+//     =@OOOOOOOOOOOOOOOOOOOOO@@@@@@@@@@@@@@@@@@@@@@@.\@OOOOOOOOOOOOOOOO@^   
+//     @OOOOOOOOOOOOOOOOOOOO@[O@@@@@@@@@@@@@@@@@@@@@@^  ,@OOOOOOOOOOOOOOO^   
+//    =@OOOOOOOOOOOOOOOOOO@`  =@@@@@@@@@@@@@@@@@@@@@@     ,@OOOOOOOOOOOOO@   
+//    @OOOOOOOOOOOOOOOOO@^     =@@@@@@@@@@@@@@@@@@@/        ,@OOOOOOOOOOO@^  
+//   =@OOOOOOOOOOOOOOOO@.       ,@@@@@@@@@@@@@@@@[            \@OOOOOOOOOO\  
+//   OOOOOOOOOOOOOOOO@/           ,\@@@@@@@@@[.                ,@OOOOOOOOO@` 
+//  .@OOOOOOOOOOOOOO@^                    @^                    .@OOOOOOOOO\ 
+//  =@OOOOOOOOOOOOO@/                     O^                      @OOOOOOOO@`
+//  =@OOOOOOOOOOOOO@                      =^                       \OOOOOOOO\
+//  OOOOOOOOOOOOOO@`                      =^                        @OOOOOOO@
+//  \OOOOOOOOOOOO@^                       =@                        .@OOOOOO@
+//  =@OOOOOOOOOOO@.                        @                         =@OOOOOO
+//  ,@OOOOOOOOOOOO                         @^                         @OOOOOO
+//   \OOOOOOOOOOO^                         O^                         =@OOOOO
+//    @OOOOOOOOO@^                         =^                          @OOOOO
+//    ,@OOOOOOOO@^                         =^                          @OOOO@
+//      @OOOOOOO@^                        ,@^                          @OOOO@
+//       =@OOOOO@^                     ,/@[[@@`                        @OOO@`
+//         \@OOOO^                  =O/`      ,\`                     =@O@/  
+//           ,@@O@                                                    /@/    
+//              ,\@\`                                             ]/@[.      
+//                   [\@@\]].                           ,]]]O@@/[`           
+
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import "swiper/dist/css/swiper.css";
 import Vue from 'vue'

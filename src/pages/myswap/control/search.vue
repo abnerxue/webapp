@@ -35,7 +35,7 @@ export default {
     width: 100%;
     margin: 0;
     padding: 0;
-    color: #414141;
+    color: #323233;
     text-align: left;
     background-color:#222222 ;
     /* border: 0.01rem solid #414141; */
@@ -49,7 +49,8 @@ export default {
     /* padding: 10px 12px; */
     border: 0.01rem solid #414141;
     margin: 0.1rem 0.1rem 0.1rem 0.3rem;
-    height: 0.8rem
+    height: 0.8rem;
+    color: #323233;
 }
 .van-search__content {
     -webkit-box-flex: 1;
@@ -58,6 +59,7 @@ export default {
     padding-left: 8px;
     background-color: #222222;
     /* border-radius: 2px; */
+    color: #323233;
 }
 .van-field__left-icon .van-icon, .van-field__right-icon .van-icon {
     display: block;

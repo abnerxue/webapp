@@ -18,35 +18,35 @@
     <div class="tabbar">
       <div class="tabbar_consult" @click="consult">
         <center>
-          <img src="../../../../static/img/图文咨询.png" />
+          <img src="../../../../static/img/btu_zixun_pre.png" />
           <br />
           <a>资讯</a>
         </center>
       </div>
       <div class="tabbar_plate" @click="plate">
         <center>
-          <img src="../../../../static/img/book.png" />
+          <img src="../../../../static/img/btu_pankou_pre.png" />
           <br />
           <a>盘口</a>
         </center>
       </div>
       <div class="tabbar_shar" @click="shar">
         <center>
-          <img src="../../../../static/img/进度svg.png" />
+          <img src="../../../../static/img/btu_fenshi_pre.png" />
           <br />
           <a>分时</a>
         </center>
       </div>
       <div class="tabbar_large" @click="large">
         <center>
-          <img src="../../../../static/img/K线图check.png" />
+          <img src="../../../../static/img/btu_kxian_pre.png" />
           <br />
           <a>k线</a>
         </center>
       </div>
       <div class="tabbar_transact" @click="transact">
         <center>
-          <img src="../../../../static/img/交易.png" />
+          <img src="../../../../static/img/btu_jiaoyi.png" />
           <br />
           <a>交易</a>
         </center>
