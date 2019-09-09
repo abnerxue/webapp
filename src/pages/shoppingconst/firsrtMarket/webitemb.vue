@@ -33,10 +33,15 @@
       <input type="checkbox" id="icheck" style="position:absolute;top:0.15rem;left:0.4rem" @click="check">
       <span style="position:absolute;top:0.05rem;left:0.8rem">已阅读并同意<a @click="goa">《常孝一卡通合约》</a></span>
     </div>
-    <div class="m-bottom">
+    <div class="m-bottom" id="a">
       <div class="m-b-l"> ￥{{count()}}</div>
-      <button class="m-dis"  id="btn" @click="check()">立即购买</button>
+      <button class="m-dis"  id="btn" @click="gob()">立即购买</button>
     </div>
+    <div class="m-bottom" id="b" style="display:none">
+      <div class="m-b-l"> ￥{{count()}}</div>
+      <button class="m-b-r"  id="btn2" @click="gonext(pagef_data.orderno)">立即购买</button>
+    </div>
+    
   </div>
 </template>
 
@@ -66,19 +71,15 @@ export default {
   methods: {
     check(){
             if($("input[type='checkbox']").is(':checked')){
-                $('#btn').removeClass('m-dis');
-                $('#btn').addClass('m-b-r');
-                $('#btn').click(function(){
-                  gonext(pagef_data.orderno)
-                });
+                $('#a').css("display","none");
+                $('#b').css("display","block");
             }else{
-                $('#btn').addClass('m-dis');
-                $('#btn').click(function(){
-                  Toast('您还未阅读协议，请先阅读协议');
-                  console.log(123)
-                  return
-                });
+                $('#a').css("display","block");
+                $('#b').css("display","none");
             }
+    },
+    gob(){
+      Toast("您还未阅读协议，请先阅读协议")
     },
     count(){
   return this.num*this.page_data.money;

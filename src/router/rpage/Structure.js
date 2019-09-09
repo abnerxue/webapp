@@ -31,6 +31,7 @@ const idetail = () => import('@/pages/Structure/work/idetail.vue') //
 const approvalofme = () => import('@/pages/Structure/work/approvalofme.vue') //
 const details= () => import('@/pages/Structure/work/details.vue') //
 const sdetail= () => import('@/pages/Structure/work/sdetail.vue') //
+const content= () => import('@/pages/Structure/work/content.vue') //
 
 const choose = () => import('@/pages/Structure/send/choose.vue') //
 const choosed = () => import('@/pages/Structure/send/choosed.vue') //
@@ -317,6 +318,14 @@ export default [
         path: '/sdetail',
         name: 'sdetail',
         component: sdetail,
+        meta:{
+            title:' '
+        },
+    },
+    {
+        path: '/content',
+        name: 'content',
+        component: content,
         meta:{
             title:' '
         },

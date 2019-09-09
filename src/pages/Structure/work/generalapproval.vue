@@ -376,7 +376,6 @@ export default {
   margin: 0.15rem 2%;
   line-height: 0.9rem;
   text-align: center;
-  
 }
 
 .round{
