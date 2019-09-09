@@ -30,8 +30,8 @@
       
     </div>
     <div class="m-check"  v-if="this.$route.query.kind == 6">
-      <input type="checkbox" id="icheck" style="position:absolute;top:0.15rem;left:0.4rem" @click="check">
-      <span style="position:absolute;top:0.05rem;left:0.8rem">已阅读并同意<a @click="goa">《常孝一卡通合约》</a></span>
+      <input type="checkbox" id="icheck" style="position:absolute;top:0.15rem;left:0.4rem;zoom:130%;" @click="check" >
+      <span style="position:absolute;top:0.05rem;left:0.8rem;font-size:0.32rem">已阅读并同意<a @click="goa">《常孝一卡通合约》</a></span>
     </div>
     <div class="m-bottom" id="a">
       <div class="m-b-l"> ￥{{count()}}</div>
@@ -252,11 +252,11 @@ state: ""
 
 .m-check{
   background: white;
-  height: 3%;
+  height: 4%;
   position: fixed;
   bottom: 7%;
   width: 100%;
-  padding-top: 0.1rem;
+  padding-top: 0.15rem;
   font-size: 0.28rem;
 }
 
