@@ -6,7 +6,7 @@
         <van-icon name="arrow-left" class="m-header-icon" @click="goback" />
       </van-col>
       <van-col span="1"></van-col>
-      <van-col span="21">{{this.$route.query.coname.slice(0,12)}}</van-col>
+      <van-col span="21">{{this.$route.query.coname.slice(0,12)}}<span>...</span></van-col>
     </van-row>
 
     <van-row class="search">

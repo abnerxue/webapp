@@ -35,7 +35,7 @@
     </div>
     <div class="m-bottom">
       <div class="m-b-l"> ￥{{count()}}</div>
-      <button class="m-dis" @click="gonext(pagef_data.orderno)" id="btn" disabled="disabled">立即购买</button>
+      <button class="m-dis"  id="btn" @click="gonext(pagef_data.orderno)">立即购买</button>
     </div>
   </div>
 </template>
@@ -68,10 +68,18 @@ export default {
             if($("input[type='checkbox']").is(':checked')){
                 $('#btn').removeClass('m-dis');
                 $('#btn').addClass('m-b-r');
-                $('#btn').removeAttr('disabled','disabled');
+                // $('#btn').removeAttr('disabled','disabled');
+                $('#btn').click(function(){
+                  
+                });
             }else{
                 $('#btn').addClass('m-dis');
-                $('#btn').attr('disabled','disabled');
+                // $('#btn').attr('disabled','disabled');
+                $('#btn').click(function(){
+                  Toast('您还未阅读协议，请先阅读协议');
+                  console.log(123)
+                  return
+                });
             }
     },
     count(){

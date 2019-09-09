@@ -240,13 +240,6 @@ export default {
       this.showPicker2 = false;
     },
     onSave() {
-      let self = this;
-            let telreg=/^[1][0-9]{10}$/;
-            let myreg=/^[\S]{6,20}$/;
-            if(!telreg.test(self.tel)){
-                Toast('手机号格式错误！');
-                return
-            }
       for(let i=0;i<this.pageDatab.length-1;i++){
         if(this.pageDatab[i].name==this.value2){
           this.department_id=this.pageDatab[i].id;
@@ -268,7 +261,26 @@ export default {
         department_id: this.department_id
       };
       console.log(data.department_id);
-
+      if(data.name==""){
+        Toast('请填写姓名！')
+        return
+      }
+      if(data.phone==""){
+        Toast('请填写手机号！')
+        return
+      }
+      let self = this;
+            let telreg=/^[1][0-9]{10}$/;
+            let myreg=/^[\S]{6,20}$/;
+            if(!telreg.test(self.tel)){
+                Toast('手机号格式错误！');
+                return
+            }
+      if(data.department_id==""){
+        Toast('请选择部门！')
+        return
+      }
+      
       this.$ajax
         .post("/cxt/oa/member/add", _this.$qs.stringify(data), {
           headers: _this.Base.initAjaxHeader(1, data)
@@ -291,13 +303,6 @@ export default {
       // console.log(this.bank);
     },
     onSave2() {
-      let self = this;
-            let telreg=/^[1][0-9]{10}$/;
-            let myreg=/^[\S]{6,20}$/;
-            if(!telreg.test(self.tel)){
-                Toast('手机号格式错误！');
-                return
-            }
       for(let i=0;i<this.pageDatab.length-1;i++){
         if(this.pageDatab[i].name==this.value2){
           this.department_id=this.pageDatab[i].id;
@@ -320,6 +325,26 @@ export default {
         department_id: this.department_id
       };
       console.log(data.department_id);
+
+      if(data.name==""){
+        Toast('请填写姓名！')
+        return
+      }
+      if(data.phone==""){
+        Toast('请填写手机号！')
+        return
+      }
+      let self = this;
+            let telreg=/^[1][0-9]{10}$/;
+            let myreg=/^[\S]{6,20}$/;
+            if(!telreg.test(self.tel)){
+                Toast('手机号格式错误！');
+                return
+            }
+      if(data.department_id==""){
+        Toast('请选择部门！')
+        return
+      }
 
       this.$ajax
         .post("/cxt/oa/member/add", _this.$qs.stringify(data), {

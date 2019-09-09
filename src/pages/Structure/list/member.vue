@@ -5,20 +5,20 @@
         <van-icon name="arrow-left" class="m-header-icon" @click="goback" />
       </van-col>
       <van-col span="1"></van-col>
-      <van-col span="21">{{this.$route.query.coname}}</van-col>
+      <van-col span="21">{{this.$route.query.coname.slice(0,12)}}<span>...</span></van-col>
     </van-row>
 
 
     <van-row class="top">
       <!-- 头部返回 -->
       <van-col span="1"></van-col>
-      <van-col span="6" style="color:#00a2ff;font-size:0.3rem">
-        <span @click="goback">{{this.$route.query.coname.slice(2,8)}}</span>
+      <van-col span="7" style="color:#00a2ff;font-size:0.3rem">
+        <span @click="goback">{{this.$route.query.coname.slice(0,6)}}...</span>
       </van-col>
       <van-col span="2">
         <van-icon name="arrow" class="icon" />
       </van-col>
-      <van-col span="8" style="font-size:0.3rem">{{this.$route.query.dptname}}</van-col>
+      <van-col span="7" style="font-size:0.3rem">{{this.$route.query.dptname}}</van-col>
       <van-col span="2">
         
       </van-col>
@@ -36,7 +36,7 @@
         <div @click="gochildmember(item.id,item.name)">
           <div class="d" >
           {{item.name}} 
-          <span class="b" ></span>
+          <span class="b" >({{item.des}})</span>
           <van-icon name="arrow" class="c"/>
         </div>
         <hr style="margin:0.2rem 5%;width:90%" />
@@ -265,7 +265,17 @@ export default {
               token: this.GLOBAL.token,
               id: this.pageDatab[i].id
             };
-            // console.log(data.id);
+            console.log(data.id);
+            
+            this.$ajax
+              .post("/cxt/oa/member/dept2", _this.$qs.stringify(data), {
+                headers: _this.Base.initAjaxHeader(1, data)
+              })
+              .then(res => {
+                this.pagemember = res.data.data;
+                this.pageDatab[i].des = this.pagemember.length
+              });
+              
           };
           this.pageData=this.pageDatab
           

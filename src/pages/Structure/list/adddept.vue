@@ -65,6 +65,10 @@ export default {
         parentId:this.$route.query.pId
       };
       console.log(data.name);
+      if(data.name==""){
+        Toast('请填写部门名称！')
+        return
+      }
 
       this.$ajax
         .post("/cxt/oa/dept/insert", _this.$qs.stringify(data), {

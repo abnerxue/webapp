@@ -180,13 +180,6 @@ export default {
       this.showPicker = false;
     },
     onSave() {
-      let self = this;
-            let telreg=/^[1][0-9]{10}$/;
-            let myreg=/^[\S]{6,20}$/;
-            if(!telreg.test(self.tel)){
-                Toast('手机号格式错误！');
-                return
-            }
       let _this = this;
       let data = {
         token: this.GLOBAL.token,
@@ -203,6 +196,25 @@ export default {
         department_id: this.$route.query.dptid
       };
       console.log(data.department_id);
+      if(data.name==""){
+        Toast('请填写姓名！')
+        return
+      }
+      if(data.phone==""){
+        Toast('请填写手机号！')
+        return
+      }
+      let self = this;
+            let telreg=/^[1][0-9]{10}$/;
+            let myreg=/^[\S]{6,20}$/;
+            if(!telreg.test(self.tel)){
+                Toast('手机号格式错误！');
+                return
+            }
+      if(data.department_id==""){
+        Toast('请选择部门！')
+        return
+      }
 
       this.$ajax
         .post("/cxt/oa/member/add", _this.$qs.stringify(data), {
@@ -226,14 +238,6 @@ export default {
       // console.log(this.bank);
     },
     onSave2() {
-      let self = this;
-            let telreg=/^[1][0-9]{10}$/;
-            let myreg=/^[\S]{6,20}$/;
-            if(!telreg.test(self.tel)){
-                Toast('手机号格式错误！');
-                return
-            }
-
       this.show1 = true;
       let _this = this;
       let data = {
@@ -251,7 +255,25 @@ export default {
         department_id: this.$route.query.dptid
       };
       console.log(data.department_id);
-
+      if(data.name==""){
+        Toast('请填写姓名！')
+        return
+      }
+      if(data.phone==""){
+        Toast('请填写手机号！')
+        return
+      }
+      let self = this;
+            let telreg=/^[1][0-9]{10}$/;
+            let myreg=/^[\S]{6,20}$/;
+            if(!telreg.test(self.tel)){
+                Toast('手机号格式错误！');
+                return
+            }
+      if(data.department_id==""){
+        Toast('请选择部门！')
+        return
+      }
       this.$ajax
         .post("/cxt/oa/member/add", _this.$qs.stringify(data), {
           headers: _this.Base.initAjaxHeader(1, data)
