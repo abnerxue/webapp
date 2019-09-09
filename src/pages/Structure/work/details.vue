@@ -98,10 +98,10 @@
               <p style="font-size:0.25rem">更多</p>
           </van-col>
           <van-col span="5">
-              <button class="btn-a" @click="agree">拒绝</button>
+              <button class="btn-a" @click="reject">拒绝</button>
           </van-col>
           <van-col span="5">
-              <button class="btn-b" @click="reject">同意</button>
+              <button class="btn-b" @click="agree">同意</button>
           </van-col>
           <van-col span="1"></van-col>
       </van-row>
@@ -167,32 +167,24 @@ export default {
         });
     },
     agree(){
-      let _this=this
-      let data = {
-        token:this.GLOBAL.token,
-        id:this.$route.query.id,
-        state:0
-      }
-      this.$ajax.post("/cxt/oa/approval/commit", _this.$qs.stringify(data), {
-          headers: _this.Base.initAjaxHeader(1, data)
-        })
-        .then(res => {
-          
-        });
+      this.$router.push({
+        path:'/content',
+        query:{
+          id:this.$route.query.id,
+          state:0,
+          name:"同意"
+        }
+      })
     },
     reject(){
-      let _this=this
-      let data = {
-        token:this.GLOBAL.token,
-        id:this.$route.query.id,
-        state:1
-      }
-      this.$ajax.post("/cxt/oa/approval/commit", _this.$qs.stringify(data), {
-          headers: _this.Base.initAjaxHeader(1, data)
-        })
-        .then(res => {
-          
-        });
+      this.$router.push({
+        path:'/content',
+        query:{
+          id:this.$route.query.id,
+          state:1,
+          name:"拒绝"
+        }
+      })
     }
     
   },
