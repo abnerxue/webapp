@@ -29,13 +29,13 @@
   </div>
       
     </div>
-    <div class="m-check">
+    <div class="m-check"  v-if="this.$route.query.kind == 6">
       <input type="checkbox" id="icheck" style="position:absolute;top:0.15rem;left:0.4rem" @click="check">
       <span style="position:absolute;top:0.05rem;left:0.8rem">已阅读并同意<a @click="goa">《常孝一卡通合约》</a></span>
     </div>
     <div class="m-bottom">
       <div class="m-b-l"> ￥{{count()}}</div>
-      <button class="m-dis"  id="btn" @click="gonext(pagef_data.orderno)">立即购买</button>
+      <button class="m-dis"  id="btn" @click="check()">立即购买</button>
     </div>
   </div>
 </template>
@@ -68,13 +68,11 @@ export default {
             if($("input[type='checkbox']").is(':checked')){
                 $('#btn').removeClass('m-dis');
                 $('#btn').addClass('m-b-r');
-                // $('#btn').removeAttr('disabled','disabled');
                 $('#btn').click(function(){
-                  
+                  gonext(pagef_data.orderno)
                 });
             }else{
                 $('#btn').addClass('m-dis');
-                // $('#btn').attr('disabled','disabled');
                 $('#btn').click(function(){
                   Toast('您还未阅读协议，请先阅读协议');
                   console.log(123)
