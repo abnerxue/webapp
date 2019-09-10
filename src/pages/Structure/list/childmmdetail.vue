@@ -5,7 +5,7 @@
         <van-icon name="arrow-left" class="m-header-icon" @click="goback" />
       </van-col>
       <van-col span="1"></van-col>
-      <van-col span="18">{{this.$route.query.coname}}</van-col>
+      <van-col span="18">{{this.$route.query.coname.slice(0,12)}}<span>...</span></van-col>
       <van-col span="2">
         <van-icon name="ellipsis" class="m-header-right-icon" @click="writeMessageShow=true" />
       </van-col>
