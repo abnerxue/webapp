@@ -38,17 +38,17 @@
 
     <van-cell-group style="margin-top:0.2rem">
       <van-field label="图片" :border="false" />
-      <van-field placeholder="图片 后期修改" type="textarea">
-        <van-icon name="plus" slot="left-icon" />
-      </van-field>
+      <div class="container">
+        <div class="square" @click='sjxc'><van-icon name="plus"  class="m-plus"/></div>
+      </div>
     </van-cell-group>
 
-    <van-cell-group style="margin-top:0.2rem">
+    <!-- <van-cell-group style="margin-top:0.2rem">
       <van-field label="附件" :border="false" />
       <van-field placeholder="附件 后期修改" type="textarea">
         <van-icon name="plus" slot="left-icon" />
       </van-field>
-    </van-cell-group>
+    </van-cell-group> -->
 
     <van-cell-group style="margin-top:0.2rem">
       <div class="ss">
@@ -134,6 +134,22 @@ export default {
     //     uName:this.$route.query.name,
     //   }
     // },
+    sjxc(){
+       
+        
+    if(this.GLOBAL.systemName==='android'){
+      
+        window.android.requestUploadPictureFromGallery('portrait')
+         
+    }
+    if(this.GLOBAL.systemName==='ios'){
+       
+        console.log('ios')
+       window.webkit.messageHandlers.requestUploadPictureFromGallery.postMessage("portrait");
+    
+    }
+   
+    },
     gohow() {
       this.$router.push({
         path:"/setapproval",
@@ -458,11 +474,19 @@ export default {
   margin: 0.3rem 5%;
   padding-bottom: 0.3rem
 }
-
-
-
 .main{
   margin: 0.3rem 0 0.1rem 0.3rem;
   font-size: 0.3rem
+}
+
+.square{
+  width: 0.9rem;
+  height: 0.9rem;
+  background-color: #ededed;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  color:#ededed;
+  position: relative
 }
 </style>

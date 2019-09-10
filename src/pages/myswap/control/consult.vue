@@ -8,7 +8,7 @@
             <van-col span="2"></van-col>
         </van-row>
         <chart ref="chart1" id="char"  :auto-resize="true"></chart>
- 		<div class="tabbar">
+ 		<!-- <div class="tabbar">
 			 <div class="tabbar_consult" @click="consult">
  				<center>
           <img src="../../../../static/img/btu_zixun_pre.png" />
@@ -44,7 +44,19 @@
           <a>交易</a>
         </center>
  			</div>
- 		</div>
+ 		</div> -->
+        <van-tabbar v-model="active" class="active_tab" >
+    <van-tabbar-item
+      v-for="(item,index) in tabbars"
+      :key="index"
+      replace :to="item.key"
+    >
+      <span :class="currIndex == index ? active:''">{{item.title}}</span>
+      <template slot="icon" slot-scope="props">
+        <img :src="props.active ? item.active : item.normal">
+      </template>
+    </van-tabbar-item>
+  </van-tabbar>
     </div>
 </template>
 <script>
@@ -95,7 +107,46 @@
                 message:{
                     code:"",
                     type:""
-                }
+                },
+                currIndex: 0,
+      active: 0,
+      tabbars: [
+        // {
+        //   name: "zixun",
+        //   title: "资讯",
+        //   normal: require("../../../../static/img/btu_zixun_nor.png"),
+        //   active: require("../../../../static/img/btu_zixun_pre.png"),
+        //   key:'/consult?stage='+ this.$route.query.stage
+        // },
+        {
+          name: "pankou",
+          title: "盘口",
+          normal: require("../../../../static/img/btu_pankou_nor.png"),
+          active: require("../../../../static/img/btu_pankou_pre.png"),
+          key:'/plate?stage='+this.$route.query.stage
+        },
+        {
+          name: "fenshi",
+          title: "分时",
+          normal: require("../../../../static/img/btu_fenshi_nor.png"),
+          active: require("../../../../static/img/btu_fenshi_pre.png"),
+          key:'/shar?stage='+this.$route.query.stage
+        },
+        {
+          name: "kxian",
+          title: "K线",
+          normal: require("../../../../static/img/btu_kxian_nor.png"),
+          active: require("../../../../static/img/btu_kxian_pre.png"),
+          key:'/large?stage='+this.$route.query.stage
+        },
+        {
+          name: "trade",
+          title: "交易",
+          normal: require("../../../../static/img/btu_jiaoyi_nor.png"),
+          active: require("../../../../static/img/btu_jiaoyi_pre.png"),
+          key:'/transact?stage='+this.$route.query.stage
+        }
+      ],
             }
         },
         mounted(){
@@ -671,5 +722,17 @@
   top: 0.3rem;
   left: 0.2rem;
   font-size: 0.45rem;
+}
+.active_tab img {
+  width: 26px;
+  height: 26px;
+}
+.van-tabbar-item {
+  background-color:#282828
+}
+
+.van-tabbar-item--active {
+  color:white;
+  background-color:#e96300
 }
 </style>
