@@ -39,9 +39,9 @@
     <van-cell-group style="margin-top:0.2rem">
       <van-field label="图片" :border="false" />
       <div class="container" >
-        <div  v-for="(selitem,index) in  imgs" :key="index"  style="position:relative"> 
-          <img :src='selitem' style="width:0.6rem;height:0.6rem;overflow:hidden;"/>
-          <div class="cross2"><van-icon name="cross" /></div>
+        <div  v-for="(selitem,index) in  imgs" :key="index"  class="contain3"> 
+          <img :src='selitem' style="width:0.9rem;height:0.9rem;overflow:hidden;"/>
+          <div class="cross3"><van-icon name="cross" /></div>
         </div>
         
         
@@ -310,7 +310,23 @@ export default {
       this.ccUserIds=this.list_id.toString();
     },
     onSubmit(){
-      this.show=true;
+      if(this.title==""){
+        Toast('请输入申请内容')
+        return
+      }
+      if(this.detail==""){
+        Toast('请输入审批详情')
+        return
+      }
+      if(this.userIds==""){
+        Toast('请选择审批人')
+        return
+      }
+      if(this.ccUserIds==""){
+        Toast('请选择抄送人')
+        return
+      }
+      
       let _this = this;
       let data={
         tempId:this.$route.query.id,
@@ -319,7 +335,7 @@ export default {
         ccUserIds:this.ccUserIds,
         images:this.urls
       }
-
+      
       $.ajax({
         type:'post',
         url:'cxt/oa/approval/submit',
@@ -332,6 +348,7 @@ export default {
         dataType:'json',
         success:function(data){
           console.log('ok');
+          this.show=true;
         },
         error:function(){
           console.log(error)
@@ -512,5 +529,26 @@ export default {
   position: relative;
   color:#ededed;
   position: relative
+}
+.cross3{
+  position: absolute;
+  top:-0.05rem;
+  right: 0.05rem;
+  font-size: 0.04rem;
+  z-index:5;
+  background-color:black;
+  color: white;
+  width:0.35rem;
+  height:0.35rem;
+  border-radius: 0.35rem;
+  text-align: center
+}
+.contain3{
+  width: 1rem;
+  height: 0.9rem;
+  position: relative;
+  display: inline-block;
+  margin-right: 0.2rem;
+  margin-bottom: 0.2rem
 }
 </style>
