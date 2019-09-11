@@ -1,7 +1,7 @@
 <script>
 const systemName='';
 const token='';
-
+const struct="";
 const role='';
 const hasEnter=false;
 const userSite="中国钓鱼岛";

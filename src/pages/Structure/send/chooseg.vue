@@ -34,7 +34,7 @@
       <div v-for="(item,index) in pagemember" :key="index">
         <!-- 成员 -->
 
-        <div class="a" @click="goeditchilddept(item.id,item.name)">
+        <div class="a" @click="gofirst(item.id,item.name)">
           <van-row>
             <van-col span="1"></van-col>
             <van-col span="4">
@@ -181,6 +181,70 @@ export default {
        console.log(this.pagemember)
         });
         
+    },
+    gofirst(id,name) {
+      let list_name = sessionStorage.getItem('tag');
+      if(list_name ==1){
+        list_name = 'select_list_';
+      }else{
+        list_name = 'select_list';
+      }
+      if(!sessionStorage.getItem(list_name)){
+        sessionStorage.setItem(list_name,JSON.stringify([
+            {
+            uId:id,
+            uName:name,
+            // coname: this.$route.query.coname,
+            // dptname:this.$route.query.dptname,
+            // pId: this.$route.query.pId,
+            // dptid: this.$route.query.dptid,
+            id:this.$route.query.id
+          }
+        ]));
+      }else{
+        let lists = JSON.parse(sessionStorage.getItem(list_name));
+        lists.push({
+          uId:id,
+          uName:name,
+          // coname: this.$route.query.coname,
+          // dptname:this.$route.query.dptname,
+          // pId: this.$route.query.pId,
+          // dptid: this.$route.query.dptid,
+          id:this.$route.query.id
+        });
+    //     let r = lists.filter(function (element, index, self) {
+    //       // console.log(self.indexOf(element.uId) +"=========="+index);
+    //       // console.log(element.uId +"==="+ self[index].uId);
+    //       if(element.uId === self[index].uId){
+    //         // element.uId === self[index].uId
+    //         console.log(self.indexOf(element));
+    // 　　　　return self.indexOf(element) === index;
+    //       }
+    // 　　}); 
+    let obj = {};
+
+let peon = lists.reduce((cur,next) => {
+    obj[next.uId] ? "" : obj[next.uId] = true && cur.push(next);
+    return cur;
+},[]) //设置cur默认类型为数组，并且初始值为空的数组
+console.log(peon);
+    // let set = new Set(lists);
+    // console.log(set);
+        sessionStorage.setItem(list_name,JSON.stringify(peon));
+      }
+      this.$router.push({
+        path: "/generalapproval",
+        query: {
+          uId:id,
+          uName:name,
+          // coname: this.$route.query.coname,
+          // dptname:this.$route.query.dptname,
+          // pId: this.$route.query.pId,
+          // dptid: this.$route.query.dptid,
+          id:this.$route.query.id
+        }
+      });
+      
     },
 
     

@@ -163,10 +163,11 @@ export default {
    
     },
     uploadFileResult(a){
-      let img = JSON.parse(a);
-     
-       this.imgs.push(img.data.image)
-       this.urls.push(img.data.url)
+       this.GLOBAL.struct = JSON.parse(a);
+      
+       this.imgs.push(this.GLOBAL.struct.data.image)
+       this.urls.push(this.GLOBAL.struct.data.url)
+       
      
     },
   
@@ -483,7 +484,7 @@ export default {
   position: absolute;
   top:-0.05rem;
   right: 0.05rem;
-  font-size: 0.04rem;
+  font-size: 0.35rem;
   z-index:5;
   background-color:black;
   color: white;
@@ -501,7 +502,7 @@ export default {
   position: absolute;
   top:-0.05rem;
   right: 0.45rem;
-  font-size: 0.04rem;
+  font-size: 0.35rem;
   z-index:5;
   background-color:black;
   color: white;
@@ -534,7 +535,7 @@ export default {
   position: absolute;
   top:-0.05rem;
   right: 0.05rem;
-  font-size: 0.04rem;
+  font-size: 0.35rem;
   z-index:5;
   background-color:black;
   color: white;
