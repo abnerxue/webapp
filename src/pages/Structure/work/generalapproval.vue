@@ -103,6 +103,7 @@
 <script>
 import Vue from "vue";
 import global_ from "../../global"; //引用文件
+import { Toast } from 'vant';
 Vue.prototype.GLOBAL = global_; //挂载到Vue实例上面
 export default {
   data() {
@@ -151,7 +152,7 @@ export default {
    
     },
     uploadFileResult(a){
-      console.log(a)
+      Toast(a)
     },
     gohow() {
       this.$router.push({
