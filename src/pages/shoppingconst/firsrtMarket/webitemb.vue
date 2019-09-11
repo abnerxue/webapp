@@ -35,11 +35,7 @@
     </div>
     <div class="m-bottom" id="a">
       <div class="m-b-l"> ￥{{count()}}</div>
-<<<<<<< HEAD
-      <button class="m-dis"  id="btn" @click="gonext()">立即购买</button>
-=======
       <button class="m-dis"  id="btn" @click="gob()">立即购买</button>
->>>>>>> 61aae0ef7c89440620572fad0b0dee032394ea0e
     </div>
     <div class="m-bottom" id="b" style="display:none">
       <div class="m-b-l"> ￥{{count()}}</div>
@@ -73,12 +69,6 @@ export default {
   // 预编译
 
   methods: {
-<<<<<<< HEAD
-    test(){
-     Toast(666)
-    },
-        gonext(){
-=======
     check(){
             if($("input[type='checkbox']").is(':checked')){
                 $('#a').css("display","none");
@@ -108,7 +98,6 @@ export default {
         this.totle_price = this.num*this.page_data.money;
       },
       gonext(scorecost){
->>>>>>> 61aae0ef7c89440620572fad0b0dee032394ea0e
          let _this=this
       this.pagef_data = {
            amount: 0,
