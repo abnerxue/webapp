@@ -32,7 +32,7 @@
     <div v-if="this.$route.query.kind == 6">
     <div class="m-check">
       <input type="checkbox" id="icheck" style="position:absolute;top:0.15rem;left:0.4rem;zoom:130%;" @click="check" >
-      <span style="position:absolute;top:0.05rem;left:0.8rem;font-size:0.32rem">已阅读并同意<a @click="goa">《常孝一卡通合约》</a></span>
+      <span style="position:absolute;top:0.15rem;left:0.85rem;font-size:0.32rem">已阅读并同意<a @click="goa">《常孝一卡通合约》</a></span>
     </div>
     <div class="m-bottom" id="a">
       <div class="m-b-l"> ￥{{count()}}</div>
@@ -45,7 +45,7 @@
     </div>
     <div class="m-bottom" v-else>
       <div class="m-b-l"> ￥{{count()}}</div>
-      <button class="m-b-r"  id="btn2" @click="gonext(pagef_data.orderno)">立即购买</button>
+      <button class="m-b-r"   @click="gonext(pagef_data.orderno)">立即购买</button>
     </div>
   </div>
 </template>
@@ -157,27 +157,6 @@ state: ""
       
         });
       },
-    check(){
-            if($("#icheck").is(':checked')){
-                $('#btn').removeClass('m-dis');
-                $('#btn').addClass('m-b-r');
-                
-                
-                 
-                
-                
-                
-            }else{
-                $('#btn').addClass('m-dis');
-                  $('#btn').addClass('m-dis');
-                $('#btn').click(function(){
-
-                  Toast('您还未阅读协议，请先阅读协议');
-                  console.log(123)
-                  return
-                });
-            }
-    },
     count(){
   return this.num*this.page_data.money;
 },
