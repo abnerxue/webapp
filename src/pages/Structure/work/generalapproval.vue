@@ -39,7 +39,9 @@
     <van-cell-group style="margin-top:0.2rem">
       <van-field label="图片" :border="false" />
       <div class="container">
-        <div class="square" @click='sjxc'><van-icon name="plus"  class="m-plus"/></div>
+        <div class="square" @click='sjxc'><van-icon name="plus"  class="m-plus"/>
+          <img >
+        </div>
       </div>
     </van-cell-group>
 
@@ -152,7 +154,8 @@ export default {
    
     },
     uploadFileResult(a){
-      Toast(a)
+      let img = JSON.parse(a);
+      img.data.image
     },
     gohow() {
       this.$router.push({
