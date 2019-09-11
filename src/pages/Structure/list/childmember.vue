@@ -12,20 +12,20 @@
     <van-row class="top">
       <!-- 头部返回 -->
       <van-col span="1"></van-col>
-      <van-col span="7" style="color:#00a2ff;font-size:0.3rem">
-        <span @click="goa">{{this.$route.query.coname.slice(0,6)}}...</span>
+      <van-col span="6" style="color:#00a2ff;font-size:0.3rem">
+        <span @click="goa">{{this.$route.query.coname.slice(2,8)}}</span>
       </van-col>
       <van-col span="2">
         <van-icon name="arrow" class="icon" />
       </van-col>
-      <van-col span="5" style="color:#00a2ff;font-size:0.3rem;">
+      <van-col span="6" style="color:#00a2ff;font-size:0.3rem">
           <span @click="gob">{{this.$route.query.dptname.slice(0,6)}}</span>
       </van-col>
       <van-col span="2">
         <van-icon name="arrow" class="icon" />
       </van-col>
-      <van-col span="5" style="font-size:0.3rem">{{this.$route.query.name.slice(0,6)}}</van-col>
-      <van-col span="2"></van-col>
+      <van-col span="6" style="font-size:0.3rem">{{this.$route.query.name.slice(0,6)}}</van-col>
+      <van-col span="1"></van-col>
     </van-row>
     <div style="height:0.2rem;width:100%;background-color:#ededed;margin-bottom:0.2rem ;top:1.8rem;z-index:2;position:fixed"></div>
     

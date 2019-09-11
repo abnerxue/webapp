@@ -9,7 +9,7 @@
     </van-row>
 
 
-    <van-row class="top" >
+    <van-row class="top">
       <!-- 头部返回 -->
       <van-col span="1"></van-col>
       <van-col span="7" style="color:#00a2ff;font-size:0.3rem">
@@ -18,11 +18,11 @@
       <van-col span="2">
         <van-icon name="arrow" class="icon" />
       </van-col>
-      <van-col span="5" style="font-size:0.3rem">{{this.$route.query.dptname}}</van-col>
+      <van-col span="7" style="font-size:0.3rem">{{this.$route.query.dptname}}</van-col>
       <van-col span="2">
         
       </van-col>
-      <van-col span="6" style="font-size:0.3rem"></van-col>
+      <van-col span="4" style="font-size:0.3rem"></van-col>
       <van-col span="1"></van-col>
     </van-row>
     <div style="height:0.2rem;width:100%;background-color:#ededed;margin-bottom:0.2rem ;top:1.8rem;z-index:2;position:fixed"></div>
@@ -105,7 +105,6 @@ export default {
     return {
       s: "",
       pagemember: [],
-      pageMember: [],
       id: "",
       name: "",
       pId:"",
@@ -264,7 +263,7 @@ export default {
             let _this = this;
             let data = {
               token: this.GLOBAL.token,
-              deptId: this.pageDatab[i].id
+              id: this.pageDatab[i].id
             };
             console.log(data.id);
             
@@ -273,8 +272,8 @@ export default {
                 headers: _this.Base.initAjaxHeader(1, data)
               })
               .then(res => {
-                this.pageMember = res.data.data;
-                this.pageDatab[i].des = this.pageMember.length
+                this.pagemember = res.data.data;
+                this.pageDatab[i].des = this.pagemember.length
               });
               
           };

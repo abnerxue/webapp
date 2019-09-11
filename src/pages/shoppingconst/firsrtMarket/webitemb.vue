@@ -157,6 +157,44 @@ state: ""
       
         });
       },
+    check(){
+            if($("#icheck").is(':checked')){
+                $('#btn').removeClass('m-dis');
+                $('#btn').addClass('m-b-r');
+                
+                
+                 
+                
+                
+                
+            }else{
+                $('#btn').addClass('m-dis');
+                  $('#btn').addClass('m-dis');
+                $('#btn').click(function(){
+
+                  Toast('您还未阅读协议，请先阅读协议');
+                  console.log(123)
+                  return
+                });
+            }
+    },
+    count(){
+  return this.num*this.page_data.money;
+},
+     num_plus(){
+        // console.log(555);
+        this.num++;
+        this.totle_price = this.num*this.page_data.money;
+      },
+      num_minus(){
+        // console.log(555);
+        if(this.num<=0){
+          return;
+        }
+        this.num--;
+        this.totle_price = this.num*this.page_data.money;
+      },
+  
         getDataList(){
           
       let _this=this
