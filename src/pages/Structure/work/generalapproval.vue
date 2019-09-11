@@ -39,7 +39,7 @@
     <van-cell-group style="margin-top:0.2rem">
       <van-field label="图片" :border="false" />
       <div class="container" >
-        <div  v-for="(selitem,index) in  this.GLOBAL.struct.imgs" :key="index"  class="contain3"> 
+        <div  v-for="(selitem,index) in  imgs" :key="index"  class="contain3"> 
           <img :src='selitem' style="width:0.9rem;height:0.9rem;overflow:hidden;"/>
           <div class="cross3"><van-icon name="cross" /></div>
         </div>
@@ -335,7 +335,7 @@ export default {
         content:{"detailsOfApproval":this.detail,"contentOfApplication":this.title},
         userIds:this.userIds,
         ccUserIds:this.ccUserIds,
-        images:this.GLOBAL.struct.urls
+        images:this.urls
       }
       
       $.ajax({
@@ -349,8 +349,14 @@ export default {
         contentType:'application/json',
         dataType:'json',
         success:function(data){
-          console.log('ok');
+
+          if(data.data.state == '000'){
           this.show=true;
+          this.GLOBAL.struct={"imgs":[],"urls":[]};
+          }else{
+            Toast(data.data.msg)
+          }
+          
         },
         error:function(){
           console.log(error)
@@ -375,9 +381,7 @@ export default {
       this.uploadFileResult(b);
     };
   },
-  destroyed(){
-    this.GLOBAL.struct={"imgs":[],"urls":[]};
-  }
+ 
 
 };
 </script>
