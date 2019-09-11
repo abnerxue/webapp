@@ -39,7 +39,10 @@
     <van-cell-group style="margin-top:0.2rem">
       <van-field label="图片" :border="false" />
       <div class="container" >
-        <div  v-for="selitem in  imgs"> <img :src='selitem' /></div>
+        <div  v-for="(selitem,index) in  imgs" :key="index"  style="position:relative"> 
+          <img :src='selitem' style="width:0.6rem;height:0.6rem;overflow:hidden;"/>
+          <div class="cross2"><van-icon name="cross" /></div>
+        </div>
         
         
         <div class="square" @click='sjxc'>
@@ -115,6 +118,7 @@ export default {
   data() {
     return {
       imgs:[],
+      urls:[],
       checked: false,
       pageData:'',
       list:[],
@@ -162,7 +166,7 @@ export default {
       let img = JSON.parse(a);
      
        this.imgs.push(img.data.image)
-     
+       this.urls.push(img.data.url)
      
     },
   
@@ -312,7 +316,8 @@ export default {
         tempId:this.$route.query.id,
         content:{"detailsOfApproval":this.detail,"contentOfApplication":this.title},
         userIds:this.userIds,
-        ccUserIds:this.ccUserIds
+        ccUserIds:this.ccUserIds,
+        images:this.urls
       }
 
       $.ajax({
