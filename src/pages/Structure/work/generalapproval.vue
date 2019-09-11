@@ -374,6 +374,9 @@ export default {
       this.uploadFileResult(b);
     };
   },
+  destroyed(){
+    this.GLOBAL.struct=""
+  }
 
 };
 </script>
