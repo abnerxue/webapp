@@ -139,16 +139,19 @@ export default {
         
     if(this.GLOBAL.systemName==='android'){
       
-        window.android.requestUploadPictureFromGallery('portrait')
+        window.android.requestUploadPictureFromGallery('oa')
          
     }
     if(this.GLOBAL.systemName==='ios'){
        
         console.log('ios')
-       window.webkit.messageHandlers.requestUploadPictureFromGallery.postMessage("portrait");
+       window.webkit.messageHandlers.requestUploadPictureFromGallery.postMessage("oa");
     
     }
    
+    },
+    uploadFileResult(a){
+      console.log(a)
     },
     gohow() {
       this.$router.push({
@@ -330,7 +333,10 @@ export default {
     this.getList();
     // this.top();
     this.getSelect();
-    this.getInfo()
+    this.getInfo();
+    window.uploadFileResult = b => {
+      this.uploadFileResult(b);
+    };
   },
 
 };

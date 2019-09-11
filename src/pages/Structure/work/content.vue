@@ -15,7 +15,7 @@
     </van-cell-group>
     <div class="footer">
         <div style="margin:0.2rem 0.3rem">
-            <van-icon name="star-o" class="m-icon"/>
+            <van-icon name="star-o" class="m-icon" @click="goa"/>
             <van-icon name="star-o" class="m-icon"/>
             <van-icon name="star-o" class="m-icon"/>
         </div>
@@ -64,6 +64,14 @@ export default {
         .then(res => {
           
         });
+    },
+    goa(){
+      this.$router.push({
+        path:"/a",
+        query:{
+          id:this.$route.query.id
+        }
+      })
     }
     
   }

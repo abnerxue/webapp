@@ -38,6 +38,11 @@ const choosed = () => import('@/pages/Structure/send/choosed.vue') //
 const choosef = () => import('@/pages/Structure/send/choosef.vue') //
 const chooseg = () => import('@/pages/Structure/send/chooseg.vue') //
 
+const a = () => import('@/pages/Structure/choose/a.vue') //
+const b = () => import('@/pages/Structure/choose/b.vue') //
+const c = () => import('@/pages/Structure/choose/c.vue') //
+const d = () => import('@/pages/Structure/choose/d.vue') //
+
 
 export default [
 
@@ -326,6 +331,38 @@ export default [
         path: '/content',
         name: 'content',
         component: content,
+        meta:{
+            title:' '
+        },
+    },
+    {
+        path: '/a',
+        name: 'a',
+        component: a,
+        meta:{
+            title:' '
+        },
+    },
+    {
+        path: '/b',
+        name: 'b',
+        component: b,
+        meta:{
+            title:' '
+        },
+    },
+    {
+        path: '/c',
+        name: 'c',
+        component: c,
+        meta:{
+            title:' '
+        },
+    },
+    {
+        path: '/d',
+        name: 'd',
+        component: d,
         meta:{
             title:' '
         },

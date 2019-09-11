@@ -14,8 +14,8 @@
       </van-col>
       
     </van-row>
-
-    <div v-for="(item,index) in pagemember" :key="index" style="margin-top:1rem" @click="gonext(item.id)">
+    <div style="margin-top:1rem">
+    <div v-for="(item,index) in pagemember" :key="index" style="margin-top:0.2rem" @click="gonext(item.id)">
       <van-row class="main">
         <van-col span="6">
           <div class="round">
@@ -31,6 +31,7 @@
         </van-col>
         <van-col span="4" class="b">{{item.ctime.slice(11,16)}}</van-col>
       </van-row>
+    </div>
     </div>
     <!-- <van-tabs v-model="active" color="#00a2ff" style="margin-top:1rem;">
         <van-tab title="全部">内容 1</van-tab>  
