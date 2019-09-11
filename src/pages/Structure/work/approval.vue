@@ -155,7 +155,7 @@ export default {
       this.$router.push('/generalapproval')
     },
     goback(){
-      this.$router.back('/work')
+      this.$router.push('/work')
     },
     top(){
       window.scrollTo(0,0)
