@@ -1,7 +1,7 @@
 <script>
 const systemName='';
 const token='';
-const struct="";
+const struct={"imgs":[],"urls":[]};
 const role='';
 const hasEnter=false;
 const userSite="中国钓鱼岛";
@@ -11,6 +11,7 @@ const userSite="中国钓鱼岛";
     token,//用户token身份
     systemName,//
     hasEnter,//用户登录状态
-    role
+    role,
+    struct
   }
 </script>

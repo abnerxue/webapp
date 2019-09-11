@@ -117,8 +117,8 @@ Vue.prototype.GLOBAL = global_; //挂载到Vue实例上面
 export default {
   data() {
     return {
-      imgs:[],
-      urls:[],
+      imgs:this.GLOBAL.struct.imgs,
+      urls:this.GLOBAL.struct.urls,
       checked: false,
       pageData:'',
       list:[],
@@ -163,10 +163,11 @@ export default {
    
     },
     uploadFileResult(a){
-       this.GLOBAL.struct = JSON.parse(a);
-      
-       this.imgs.push(this.GLOBAL.struct.data.image)
-       this.urls.push(this.GLOBAL.struct.data.url)
+      let k = JSON.parse(a);
+      this.GLOBAL.struct.imgs.push(k.data.image)
+      this.GLOBAL.struct.urls.push(k.data.url)
+       //this.imgs.push(this.GLOBAL.struct.data.image)
+       //this.urls.push(this.GLOBAL.struct.data.url)
        
      
     },
@@ -375,7 +376,7 @@ export default {
     };
   },
   destroyed(){
-    this.GLOBAL.struct=""
+    this.GLOBAL.struct={"imgs":[],"urls":[]};
   }
 
 };
