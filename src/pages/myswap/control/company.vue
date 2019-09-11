@@ -46,7 +46,7 @@ export default {
 
   methods: {
     fff(e) {
-      this.$router.push({ path: "/large?stage=" + e });
+      this.$router.push({ path: "/plate?stage=" + e });
     },
     init() {
       console.log(this.company_init);

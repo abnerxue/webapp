@@ -308,7 +308,6 @@ export default {
           this.department_id=this.pageDatab[i].id;
         }
       }
-      this.show1 = true;
       let _this = this;
       let data = {
         token: this.GLOBAL.token,
@@ -350,7 +349,9 @@ export default {
         .post("/cxt/oa/member/add", _this.$qs.stringify(data), {
           headers: _this.Base.initAjaxHeader(1, data)
         })
-        .then(res => {});
+        .then(res => {
+          this.show1 = true;
+        });
     },
     onDelete() {
       this.show2 = true;
