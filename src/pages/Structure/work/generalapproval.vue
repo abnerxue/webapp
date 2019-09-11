@@ -38,9 +38,13 @@
 
     <van-cell-group style="margin-top:0.2rem">
       <van-field label="图片" :border="false" />
-      <div class="container">
-        <div class="square" @click='sjxc'><van-icon name="plus"  class="m-plus"/>
-          <img >
+      <div class="container" >
+        <div  v-for="selitem in  imgs"> <img :src='selitem' /></div>
+        
+        
+        <div class="square" @click='sjxc'>
+          <van-icon name="plus"  class="m-plus" />
+          
         </div>
       </div>
     </van-cell-group>
@@ -110,6 +114,7 @@ Vue.prototype.GLOBAL = global_; //挂载到Vue实例上面
 export default {
   data() {
     return {
+      imgs:[],
       checked: false,
       pageData:'',
       list:[],
@@ -155,8 +160,12 @@ export default {
     },
     uploadFileResult(a){
       let img = JSON.parse(a);
-      img.data.image
+     
+       this.imgs.push(img.data.image)
+     
+     
     },
+  
     gohow() {
       this.$router.push({
         path:"/setapproval",
