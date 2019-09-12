@@ -99,7 +99,7 @@ export default {
     
      deviceList: [],//用于存放加载的数据
             totalPage: 0,
-            pageNumber: 0,
+            pageNumber: 1,
             pageNumber_:0,
             loading: false,//控制上拉加载的加载动画
             finished: false,//控制在页面往下移动到底部时是否调用接口获取数据
@@ -138,7 +138,7 @@ export default {
                   	page: this.pageNumber, //当前页 默认0,回调之前会加1; 即callback(page)会从1开始
 					          size: 20
               };
-              console.log(this.data)
+              console.log(data.page)
               let _this=this;
               this.uplists=[{
                  pname:'',
@@ -149,9 +149,10 @@ export default {
           headers: _this.Base.initAjaxHeader(1, data)
         }).then(res => { 
               _this.listss=res.data.data.list
-              console.log( _this.uplists)
+              console.log( _this.listss)
                
-               if (_this.listss.length != _this.size * _this.page) {
+               if (_this.listss.length != this.size * this.page) {
+                 console.log(this.page)
               _this.finished = true;
               _this.loading = false;
             } else {

@@ -21,9 +21,9 @@
             <van-button icon="filter-o" style="border:none">筛选</van-button>
         </van-col>
     </van-row>
-    <hr style="margin-top:2rem">
+    <hr style="position:fixed;top:1.85rem;width:100%">
     
-    <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" >
+    <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" style="margin-top:1.85rem">
     <div v-for="(item,index) in card" :key="index" @click="godetail(item.id)">
       <van-row class="main">
         <van-col span="6">
@@ -42,7 +42,7 @@
       </van-row>
     </div>
     </van-list>
-
+    
   </div>
 </template>
 <script>
@@ -55,12 +55,11 @@ export default {
       pagemember:[],
       statename:'',
       userId:"",
-      card:'',
+      card:[],
       page: 1,
       size: 20,
       finished: false,
       loading: false,
-      nodata:false,
     };
   },
   methods: {
@@ -95,7 +94,15 @@ export default {
 
           if (res.data.state === "000") {
             if (res.data.data.list.length > 0) {
-              this.card=res.data.data.list
+              // this.card=res.data.data.list
+              for(let i = 0 ; i<res.data.data.list.length;i++){
+                this.card.push(res.data.data.list[i])
+              }
+              console.log( this.card)
+              // res.data.data.list.forEach(item => {
+              //   this.card.push(item);
+                
+              // });
             }
             if (this.card.length != this.size * this.page) {
               this.finished = true;
