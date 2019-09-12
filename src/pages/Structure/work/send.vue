@@ -18,7 +18,10 @@
         <van-tab title="全部">内容 1</van-tab>  
         <van-tab title="未读">内容 2</van-tab>
     </van-tabs> -->
-    <div v-for="(item,index) in pagemember" :key="index" style="margin-top:1rem" @click="godetail(item.id)">
+    <div style="margin-top:1rem">
+
+    
+    <div v-for="(item,index) in pagemember" :key="index" style="margin-top:0.2rem" @click="godetail(item.id)">
       <van-row class="main">
         <van-col span="6">
           <div class="round">
@@ -34,6 +37,7 @@
         </van-col>
         <van-col span="4" class="b">{{item.ctime.slice(11,16)}}</van-col>
       </van-row>
+    </div>
     </div>
   </div>
 </template>

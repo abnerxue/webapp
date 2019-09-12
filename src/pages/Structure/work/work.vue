@@ -162,7 +162,7 @@ export default {
       window.scrollTo(0,0)
     },
     goback() {
-      this.$router.push("/home");
+      this.$router.push("/myswap");
     },
   },
   created(){

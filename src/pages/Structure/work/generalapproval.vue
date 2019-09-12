@@ -41,7 +41,7 @@
       <div class="container" >
         <div  v-for="(selitem,index) in  imgs" :key="index"  class="contain3"> 
           <img :src='selitem' style="width:0.9rem;height:0.9rem;overflow:hidden;"/>
-          <div class="cross3"><van-icon name="cross" /></div>
+          <div class="cross3"><van-icon name="cross" @click="onDeletec(index)"/></div>
         </div>
         
         
@@ -248,7 +248,7 @@ export default {
           this.pageData=res.data.data;
           //  console.log(this.pageData);
           this.list=JSON.parse(this.pageData.rule);
-          console.log(this.list);
+          // console.log(this.list);
         })
     },
     popup(){
@@ -290,10 +290,14 @@ export default {
             num = i
           }
         }
-        console.log(num)
+        // console.log(num)
         this.sel_list.splice(num  , 1);
-        console.log(this.sel_list_)
+        // console.log(this.sel_list_)
         sessionStorage.setItem('select_list',JSON.stringify(this.sel_list));
+    },
+    onDeletec(index){
+        this.GLOBAL.struct.imgs.splice(index,1)
+        this.GLOBAL.struct.urls.splice(index,1)
     },
     getSelect(){
       let list = JSON.parse(sessionStorage.getItem('select_list'))?JSON.parse(sessionStorage.getItem('select_list')):'';
@@ -307,7 +311,7 @@ export default {
       for(let i = 0;i<this.sel_list.length;i++){
         this.list_id.push(this.sel_list[i].uId)
       }
-      console.log(this.list_id)
+      // console.log(this.list_id)
       this.userIds=this.list_id_.toString();
       this.ccUserIds=this.list_id.toString();
     },
@@ -349,19 +353,23 @@ export default {
         contentType:'application/json',
         dataType:'json',
         success:function(data){
-
-          if(data.data.state == '000'){
-          this.show=true;
-          this.GLOBAL.struct={"imgs":[],"urls":[]};
+          //console.log(data)
+          if(data.state === '000'){
+            // Toast(data.msg)
+          _this.show=true;
+          _this.GLOBAL.struct={"imgs":[],"urls":[]};
+          //console.log( _this.GLOBAL)
+          //console.log( _this)
           }else{
-            Toast(data.data.msg)
+            Toast(data.msg)
           }
           
         },
         error:function(){
-          console.log(error)
+          Toast('网络异常，请稍后再试')
         }
       })
+      
       
       // this.$ajax.post("cxt/oa/approval/submit",_this.$qs.stringify(data), {
       //     headers: _this.Base.initAjaxHeader(1, data)

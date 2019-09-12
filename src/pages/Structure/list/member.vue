@@ -15,11 +15,11 @@
       <van-col span="7" style="color:#00a2ff;font-size:0.3rem">
         <span @click="goback">{{this.$route.query.coname.slice(0,6)}}...</span>
       </van-col>
-      <van-col span="2">
+      <van-col span="1">
         <van-icon name="arrow" class="icon" />
       </van-col>
-      <van-col span="7" style="font-size:0.3rem">{{this.$route.query.dptname}}</van-col>
-      <van-col span="2">
+      <van-col span="9" style="font-size:0.3rem;text-align:center">{{this.$route.query.dptname}}</van-col>
+      <van-col span="1">
         
       </van-col>
       <van-col span="4" style="font-size:0.3rem"></van-col>
@@ -36,7 +36,7 @@
         <div @click="gochildmember(item.id,item.name)">
           <div class="d" >
           {{item.name}} 
-          <span class="b" >({{item.des}})</span>
+          <span class="b" ></span>
           <van-icon name="arrow" class="c"/>
         </div>
         <hr style="margin:0.2rem 5%;width:90%" />
@@ -259,24 +259,24 @@ export default {
         .then(res => {
           this.pageDatab = res.data.data.dept;
           
-            for (let i = 0; i < this.pageDatab.length; i++) {
-            let _this = this;
-            let data = {
-              token: this.GLOBAL.token,
-              id: this.pageDatab[i].id
-            };
-            console.log(data.id);
+          //   for (let i = 0; i < this.pageDatab.length; i++) {
+          //   let _this = this;
+          //   let data = {
+          //     token: this.GLOBAL.token,
+          //     id: this.pageDatab[i].id
+          //   };
+          //   console.log(data.id);
             
-            this.$ajax
-              .post("/cxt/oa/member/dept2", _this.$qs.stringify(data), {
-                headers: _this.Base.initAjaxHeader(1, data)
-              })
-              .then(res => {
-                this.pagemember = res.data.data;
-                this.pageDatab[i].des = this.pagemember.length
-              });
+          //   this.$ajax
+          //     .post("/cxt/oa/member/dept2", _this.$qs.stringify(data), {
+          //       headers: _this.Base.initAjaxHeader(1, data)
+          //     })
+          //     .then(res => {
+          //       this.pagemember = res.data.data;
+          //       this.pageDatab[i].des = this.pagemember.length
+          //     });
               
-          };
+          // };
           this.pageData=this.pageDatab
           
         });

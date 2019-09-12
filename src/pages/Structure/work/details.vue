@@ -44,6 +44,15 @@
         <van-col span="6" class="b">申请内容</van-col>
         <van-col span="18" class="c">{{this.str.detailsOfApproval}}</van-col>
       </van-row>
+
+      <van-row style="margin-bottom:0.2rem">
+        <van-col span="6" class="b">图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片</van-col>
+        <van-col span="18" class="c">
+          <span v-for="(item,index) in pagemember.images" :key="index">
+            <img :src="item" style="width:0.9rem;height:0.9rem;overflow:hidden;margin-right:0.25rem" @click="preview(pagemember.images,index)">
+          </span>
+        </van-col>
+      </van-row>
     </div>
     <div class="grey"></div>
     <div style="margin-top:0.2rem">
@@ -67,8 +76,8 @@
         <van-col span="11" class="aa">
             {{item.username}}&nbsp;&nbsp;<span style="color: #02b638">{{item.statename}}</span>
         </van-col>
-        <van-col span="3" class="d"></van-col> <!-- shijian  -->
-        <van-col span="4" class="d"></van-col>
+        <van-col span="3" class="d">{{item.ctime.slice(5,10)}}</van-col> <!-- shijian  -->
+        <van-col span="4" class="d">{{item.ctime.slice(11,16)}}</van-col>
       </van-row>
 
       <van-row>
@@ -110,6 +119,7 @@
 </template>
 <script>
 import Vue from "vue";
+import { ImagePreview } from 'vant';
 import global_ from "../../global"; //引用文件
 Vue.prototype.GLOBAL = global_; //挂载到Vue实例上面
 export default {
@@ -120,6 +130,7 @@ export default {
       content:'',
       str:'',
       pagemember:'',
+      images:[]
     };
   },
   methods: {
@@ -143,7 +154,9 @@ export default {
         })
         .then(res => {
           this.pagemember = res.data.data;
-          console.log(this.pagemember);
+          // this.images=JSON.stringify(this.pagemember.images);
+          // console.log(this.images)
+
           if(this.pagemember.state==0){
             this.statename="待审批"
           }else if(this.pagemember.state==1){
@@ -184,6 +197,14 @@ export default {
           state:1,
           name:"拒绝"
         }
+      })
+    },
+    preview(images,index){
+        ImagePreview({
+          images:images,
+          showIndex:false,
+          loop:false,
+          startPosition:index
       })
     }
     

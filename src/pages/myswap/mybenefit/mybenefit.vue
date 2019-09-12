@@ -252,7 +252,7 @@ export default {
 }
 
 .mm-p {
-  width: 100%;
+  /* width: 100%; */
   text-align: left;
   font-size: 0.4rem;
   margin: 0 0 0 1.5rem;
