@@ -148,8 +148,11 @@ export default {
                this.$ajax.post('/cxt/market/top/deals', _this.$qs.stringify(data), {
           headers: _this.Base.initAjaxHeader(1, data)
         }).then(res => { 
-              _this.listss=res.data.data.list
-              console.log( _this.listss)
+          if (res.data.state === "000"){
+            if (res.data.data.list.length > 0) {
+              for(let i = 0 ; i<res.data.data.list.length;i++){
+                _this.listss.push(res.data.data.list[i])
+              }
                
                if (_this.listss.length != this.size * this.page) {
                  console.log(this.page)
@@ -177,6 +180,8 @@ export default {
                 if (_this.nodata) {
                 this.finished = true;
               }
+          }
+          }   
         });
 
      

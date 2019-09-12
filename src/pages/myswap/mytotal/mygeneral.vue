@@ -133,10 +133,13 @@ export default {
         .then(res => {
           if (res.data.state === "000") {
             if (res.data.data.list.length > 0) {
-              res.data.data.list.forEach(item => {
-                that.card.push(item);
-                console.log( that.card)
-              });
+              for(let i = 0 ; i<res.data.data.list.length;i++){
+                that.card.push(res.data.data.list[i])
+              }
+              // res.data.data.list.forEach(item => {
+              //   that.card.push(item);
+              //   console.log( that.card)
+              // });
             }
             if (that.card.length != that.size * that.page) {
               that.finished = true;
