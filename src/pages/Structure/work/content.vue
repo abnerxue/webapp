@@ -92,7 +92,7 @@ export default {
 }
 
 .m-header-icon {
-  margin-top: 0.3rem;
+  margin-top: 0.25rem;
   font-size: 0.5rem;
   color: #00a2ff;
 }

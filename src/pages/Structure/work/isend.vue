@@ -13,7 +13,7 @@
         <div style="color:#00a2ff;font-size:0.35rem;">帮助</div>
       </van-col>
     </van-row>
-    <van-row style="text-align:center;margin-top:1rem">
+    <van-row style="text-align:center;top:1rem;position:fixed;width:100%;background-color:white">
         <van-col span="12">
             <van-button icon="search" style="border:none">搜索</van-button>
         </van-col>
@@ -21,9 +21,10 @@
             <van-button icon="filter-o" style="border:none">筛选</van-button>
         </van-col>
     </van-row>
-    <hr>
-
-    <div v-for="(item,index) in pagemember" :key="index" @click="godetail(item.id)">
+    <hr style="margin-top:2rem">
+    
+    <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" >
+    <div v-for="(item,index) in card" :key="index" @click="godetail(item.id)">
       <van-row class="main">
         <van-col span="6">
           <div class="round">
@@ -40,6 +41,7 @@
         <van-col span="4" class="b">{{item.ctime.slice(11,16)}}</van-col>
       </van-row>
     </div>
+    </van-list>
 
   </div>
 </template>
@@ -52,7 +54,13 @@ export default {
     return {
       pagemember:[],
       statename:'',
-      userId:""
+      userId:"",
+      card:'',
+      page: 1,
+      size: 20,
+      finished: false,
+      loading: false,
+      nodata:false,
     };
   },
   methods: {
@@ -71,36 +79,80 @@ export default {
     top(){
       window.scrollTo(0,0)
     },
-    getList() {
+    onLoad() {
       let _this = this;
       let data = {
-        token:this.GLOBAL.token
+        token: this.GLOBAL.token,
+        page: this.page,
+        size: this.size
       };
-
       this.$ajax
         .post("/cxt/oa/approval/approvals", _this.$qs.stringify(data), {
           headers: _this.Base.initAjaxHeader(1, data)
         })
         .then(res => {
-          this.pagemember = res.data.data.list;
-          console.log(this.pagemember);
-          for(let i =0 ; i<this.pagemember.length;i++){
-            if(this.pagemember[i].state==0){
-            this.pagemember[i].statename="待审批"
-          }else if(this.pagemember.state==1){
-            this.pagemember[i].statename="审批通过"
-          }else if(this.pagemember.state==2){
-            this.pagemember[i].statename="拒绝"
+          
+
+          if (res.data.state === "000") {
+            if (res.data.data.list.length > 0) {
+              this.card=res.data.data.list
+            }
+            if (this.card.length != this.size * this.page) {
+              this.finished = true;
+              this.loading = false;
+            } else {
+              this.page++;
+              this.loading = false;
+            }
+          }
+
+          for(let i =0 ; i<this.card.length;i++){
+            if(this.card[i].state==0){
+            this.card[i].statename="待审批"
+          }else if(this.card.state==1){
+            this.card[i].statename="审批通过"
+          }else if(this.card.state==2){
+            this.card[i].statename="拒绝"
           }else{
-            this.pagemember[i].statename="撤回"
+            this.card[i].statename="撤回"
           }
           }
 
-          for(let i =0 ; i<this.pagemember.length;i++){
-            this.pagemember[i].str=JSON.parse(this.pagemember[i].content)
+          for(let i =0 ; i<this.card.length;i++){
+            this.card[i].str=JSON.parse(this.card[i].content)
           }
         });
     },
+    // getList() {
+    //   let _this = this;
+    //   let data = {
+    //     token:this.GLOBAL.token
+    //   };
+
+    //   this.$ajax
+    //     .post("/cxt/oa/approval/approvals", _this.$qs.stringify(data), {
+    //       headers: _this.Base.initAjaxHeader(1, data)
+    //     })
+    //     .then(res => {
+    //       this.pagemember = res.data.data.list;
+    //       console.log(this.pagemember);
+    //       for(let i =0 ; i<this.pagemember.length;i++){
+    //         if(this.pagemember[i].state==0){
+    //         this.pagemember[i].statename="待审批"
+    //       }else if(this.pagemember.state==1){
+    //         this.pagemember[i].statename="审批通过"
+    //       }else if(this.pagemember.state==2){
+    //         this.pagemember[i].statename="拒绝"
+    //       }else{
+    //         this.pagemember[i].statename="撤回"
+    //       }
+    //       }
+
+    //       for(let i =0 ; i<this.pagemember.length;i++){
+    //         this.pagemember[i].str=JSON.parse(this.pagemember[i].content)
+    //       }
+    //     });
+    // },
     godetail(id){
       this.$router.push({
         path:"idetail",
@@ -108,10 +160,11 @@ export default {
           id:id
         },
       })
-    }
+    },
+    
   },
   created() {
-    this.getList();
+    // this.getList();
     this.top();
   }
 };
@@ -136,7 +189,7 @@ export default {
 
 .m-header-icon {
   position: absolute;
-  top: 0.3rem;
+  top: 0.25rem;
   left: 0.2rem;
   font-size: 0.5rem;
   color: #00a2ff;
@@ -144,7 +197,7 @@ export default {
 
 .m-header-icon2 {
   position: absolute;
-  top: 0.3rem;
+  top: 0.25rem;
   left: 1rem;
   font-size: 0.5rem;
   color: #00a2ff;

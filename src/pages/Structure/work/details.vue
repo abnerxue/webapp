@@ -235,7 +235,7 @@ export default {
 
 .m-header-icon {
   position: absolute;
-  top: 0.3rem;
+  top: 0.25rem;
   left: 0.2rem;
   font-size: 0.5rem;
   color: #00a2ff;
@@ -243,7 +243,7 @@ export default {
 
 .m-header-icon2 {
   position: absolute;
-  top: 0.3rem;
+  top: 0.25rem;
   left: 1rem;
   font-size: 0.5rem;
   color: #00a2ff;

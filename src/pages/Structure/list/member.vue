@@ -36,7 +36,7 @@
         <div @click="gochildmember(item.id,item.name)">
           <div class="d" >
           {{item.name}} 
-          <span class="b" ></span>
+          <span class="b" >（{{item.custs}}）</span>
           <van-icon name="arrow" class="c"/>
         </div>
         <hr style="margin:0.2rem 5%;width:90%" />
@@ -327,7 +327,7 @@ export default {
 
 .m-header-icon {
   position: absolute;
-  top: 0.3rem;
+  top: 0.25rem;
   left: 0.2rem;
   font-size: 0.5rem;
   color: #00a2ff;
@@ -376,9 +376,9 @@ export default {
 }
 
 .b {
-  font-size: 0.3rem;
+  /* font-size: 0.3rem; */
   color: #9a9a9a;
-  margin: 0 0.3rem 0.1rem 0;
+  /* margin: 0 0.3rem 0.1rem 0; */
 }
 .c {
   font-size: 0.5rem;

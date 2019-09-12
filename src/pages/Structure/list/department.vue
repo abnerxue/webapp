@@ -20,7 +20,7 @@
         <div @click="gomember(item.id,item.name)">
           <div class="a">
             {{item.name}}
-            <span class="b">（{{item.des}}）</span> 
+            <span class="b">（{{item.custs}}）</span> 
             <van-icon name="arrow" class="c" />
           </div>
           <hr style="margin:0.2rem 5%;width:90%" />
@@ -108,14 +108,14 @@ export default {
             };
             // console.log(data.id);
             
-            this.$ajax
-              .post("/cxt/oa/member/dept", _this.$qs.stringify(data), {
-                headers: _this.Base.initAjaxHeader(1, data)
-              })
-              .then(res => {
-                this.pagemember = res.data.data;
-                this.pageDatab[i].des = this.pagemember.length
-              });
+            // this.$ajax
+            //   .post("/cxt/oa/member/dept", _this.$qs.stringify(data), {
+            //     headers: _this.Base.initAjaxHeader(1, data)
+            //   })
+            //   .then(res => {
+            //     this.pagemember = res.data.data;
+            //     this.pageDatab[i].des = this.pagemember.length
+            //   });
               
           };
           this.pageData=this.pageDatab
@@ -199,7 +199,7 @@ export default {
 
 .m-header-icon {
   position: absolute;
-  top: 0.3rem;
+  top: 0.25rem;
   left: 0.2rem;
   font-size: 0.5rem;
   color: #00a2ff;

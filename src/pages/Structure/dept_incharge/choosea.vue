@@ -14,7 +14,7 @@
         <div @click="gomember(item.id,item.name)">
           <div class="a" >
           {{item.name}} 
-          <!-- <span class="b"  v-bind="getNum(item.id)">({{item.id}})</span> -->
+          <span class="b">（{{item.custs}}）</span>
           <van-icon name="arrow" class="c"/>
         </div>
         <hr style="margin:0.2rem 5%;width:90%" />
@@ -198,7 +198,7 @@ export default {
 
 .m-header-icon {
   position: absolute;
-  top: 0.3rem;
+  top: 0.25rem;
   left: 0.2rem;
   font-size: 0.5rem;
   color: #00a2ff;

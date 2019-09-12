@@ -32,7 +32,7 @@
       <div @click="gochoosed(item.id,item.name)">
         <van-row>
           <van-col span="2"></van-col>
-          <van-col span="20" style="font-size:0.35rem">{{item.name.slice(0,12)}}</van-col>
+          <van-col span="20" style="font-size:0.35rem">{{item.name.slice(0,12)}}<span class="f">（{{item.custs}}）</span></van-col>
           <van-col span="2">
             <van-icon name="arrow" class="d" />
           </van-col>
@@ -259,7 +259,7 @@ export default {
 
 .m-header-icon {
   position: absolute;
-  top: 0.3rem;
+  top: 0.25rem;
   left: 0.2rem;
   font-size: 0.5rem;
   color:#00a2ff
@@ -315,14 +315,17 @@ export default {
   position: absolute;
   right: 0.1rem;
 }
-.b {
-  font-size: 0.5rem;
+.f {
+  color: #9a9a9a;
 }
 .d {
   font-size: 0.45rem;
   color: #bcbcbc;
   position: absolute;
   right: 0.35rem;
+}
+.b {
+  font-size: 0.5rem;
 }
 </style>
 
