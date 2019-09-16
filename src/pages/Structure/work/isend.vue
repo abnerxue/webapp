@@ -128,6 +128,7 @@ export default {
           for(let i =0 ; i<this.card.length;i++){
             this.card[i].str=JSON.parse(this.card[i].content)
           }
+          console.log(666)
         });
     },
     // getList() {
