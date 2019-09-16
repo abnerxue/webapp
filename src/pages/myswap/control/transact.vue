@@ -133,7 +133,7 @@
         },
         methods:{
             partner(){
-                this.$router.push("/partner");
+                // this.$router.push("/partner");
             },
             onClickLeft() {
                 this.$router.push("/company");

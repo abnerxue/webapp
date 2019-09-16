@@ -130,6 +130,7 @@ export default {
     
   methods: {
      onLoad() {
+        setTimeout(() => {
       console.log('adaw');
       // 异步更新数据
      let data ={
@@ -148,37 +149,22 @@ export default {
                this.$ajax.post('/cxt/market/top/deals', _this.$qs.stringify(data), {
           headers: _this.Base.initAjaxHeader(1, data)
         }).then(res => { 
-              _this.listss=res.data.data.list
-              console.log( _this.uplists)
+              _this.listss=res.data.data.total
+              console.log( _this.listss)
                
                if (_this.listss.length != _this.size * _this.page) {
+                 _this.uplist=res.data.data.list
               _this.finished = true;
               _this.loading = false;
             } else {
               _this.page++;
               _this.loading = false;
             }
-               /* if(arr&&arr.length>0){
-                 _this.pageNumber++;
-               }else{
-               console.log('no_data!!');
-               arr = [];
-                 _this.nodata = true;
-               }
-			      
-        
-              _this.listss = _this.listss.concat(arr)
-              // 加载状态结束
-              this.loading = false; */
-
-              // 数据全部加载完成
-              // if (this.list.length >= 40) {
-                if (_this.nodata) {
-                this.finished = true;
-              }
+             
+             
         });
 
-     
+     }, 500);
     },
     onLoad_() {
       console.log('adaw');
