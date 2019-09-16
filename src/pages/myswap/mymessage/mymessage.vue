@@ -99,7 +99,7 @@ export default {
     
      deviceList: [],//用于存放加载的数据
             totalPage: 0,
-            pageNumber: 0,
+            pageNumber: 1,
             pageNumber_:0,
             loading: false,//控制上拉加载的加载动画
             finished: false,//控制在页面往下移动到底部时是否调用接口获取数据
@@ -139,7 +139,7 @@ export default {
                   	page: this.pageNumber, //当前页 默认0,回调之前会加1; 即callback(page)会从1开始
 					          size: 20
               };
-              console.log(this.data)
+              console.log(data.page)
               let _this=this;
               this.uplists=[{
                  pname:'',
@@ -149,19 +149,40 @@ export default {
                this.$ajax.post('/cxt/market/top/deals', _this.$qs.stringify(data), {
           headers: _this.Base.initAjaxHeader(1, data)
         }).then(res => { 
-              _this.listss=res.data.data.total
-              console.log( _this.listss)
+          if (res.data.state === "000"){
+            if (res.data.data.list.length > 0) {
+              for(let i = 0 ; i<res.data.data.list.length;i++){
+                _this.listss.push(res.data.data.list[i])
+              }
                
-               if (_this.listss.length != _this.size * _this.page) {
-                 _this.uplist=res.data.data.list
+               if (_this.listss.length != this.size * this.page) {
+                 console.log(this.page)
               _this.finished = true;
               _this.loading = false;
             } else {
               _this.page++;
               _this.loading = false;
             }
-             
-             
+               /* if(arr&&arr.length>0){
+                 _this.pageNumber++;
+               }else{
+               console.log('no_data!!');
+               arr = [];
+                 _this.nodata = true;
+               }
+			      
+        
+              _this.listss = _this.listss.concat(arr)
+              // 加载状态结束
+              this.loading = false; */
+
+              // 数据全部加载完成
+              // if (this.list.length >= 40) {
+                if (_this.nodata) {
+                this.finished = true;
+              }
+          }
+          }   
         });
 
      }, 500);

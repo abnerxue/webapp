@@ -15,6 +15,7 @@
       
     </van-row>
     <div style="margin-top:1rem">
+      <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
     <div v-for="(item,index) in pagemember" :key="index" style="margin-top:0.2rem" @click="gonext(item.id)">
       <van-row class="main">
         <van-col span="6">
@@ -32,6 +33,7 @@
         <van-col span="4" class="b">{{item.ctime.slice(11,16)}}</van-col>
       </van-row>
     </div>
+    </van-list>
     </div>
     <!-- <van-tabs v-model="active" color="#00a2ff" style="margin-top:1rem;">
         <van-tab title="全部">内容 1</van-tab>  
@@ -47,7 +49,11 @@ export default {
   data() {
     return {
       active: 0,
-      pagemember:[]
+      pagemember:[],
+      page: 1,
+      size: 20,
+      finished: false,
+      loading: false,
     };
   },
   methods: {
@@ -66,20 +72,42 @@ export default {
     top() {
       window.scrollTo(0, 0);
     },
-    getList() {
+    onLoad() {
       let _this = this;
       let data = {
-        token:this.GLOBAL.token,
-        type:"0"
+        token: this.GLOBAL.token,
+        type:"0",
+        page: this.page,
+        size: this.size
       };
-
       this.$ajax
         .post("/cxt/oa/approval/ccApprovals", _this.$qs.stringify(data), {
           headers: _this.Base.initAjaxHeader(1, data)
         })
         .then(res => {
-          this.pagemember = res.data.data.list;
-          // console.log(this.pagemember);
+          
+
+          if (res.data.state === "000") {
+            if (res.data.data.list.length > 0) {
+              // this.pagemember=res.data.data.list
+              for(let i = 0 ; i<res.data.data.list.length;i++){
+                this.pagemember.push(res.data.data.list[i])
+              }
+              console.log( this.pagemember)
+              // res.data.data.list.forEach(item => {
+              //   this.pagemember.push(item);
+                
+              // });
+            }
+            if (this.pagemember.length != this.size * this.page) {
+              this.finished = true;
+              this.loading = false;
+            } else {
+              this.page++;
+              this.loading = false;
+            }
+          }
+
           for(let i =0 ; i<this.pagemember.length;i++){
             if(this.pagemember[i].state==0){
             this.pagemember[i].statename="待审批"
@@ -97,6 +125,37 @@ export default {
           }
         });
     },
+    // getList() {
+    //   let _this = this;
+    //   let data = {
+    //     token:this.GLOBAL.token,
+    //     type:"0"
+    //   };
+
+    //   this.$ajax
+    //     .post("/cxt/oa/approval/ccApprovals", _this.$qs.stringify(data), {
+    //       headers: _this.Base.initAjaxHeader(1, data)
+    //     })
+    //     .then(res => {
+    //       this.pagemember = res.data.data.list;
+    //       // console.log(this.pagemember);
+    //       for(let i =0 ; i<this.pagemember.length;i++){
+    //         if(this.pagemember[i].state==0){
+    //         this.pagemember[i].statename="待审批"
+    //       }else if(this.pagemember.state==1){
+    //         this.pagemember[i].statename="审批通过"
+    //       }else if(this.pagemember.state==2){
+    //         this.pagemember[i].statename="拒绝"
+    //       }else{
+    //         this.pagemember[i].statename="撤回"
+    //       }
+    //       }
+
+    //       for(let i =0 ; i<this.pagemember.length;i++){
+    //         this.pagemember[i].str=JSON.parse(this.pagemember[i].content)
+    //       }
+    //     });
+    // },
     gonext(id){
       this.$router.push({
         path:"/details",
@@ -107,7 +166,7 @@ export default {
     }
   },
   created() {
-    this.getList();
+    // this.getList();
     this.top();
   }
 };
@@ -132,7 +191,7 @@ export default {
 
 .m-header-icon {
   position: absolute;
-  top: 0.3rem;
+  top: 0.25rem;
   left: 0.2rem;
   font-size: 0.5rem;
   color: #00a2ff;
@@ -140,7 +199,7 @@ export default {
 
 .m-header-icon2 {
   position: absolute;
-  top: 0.3rem;
+  top: 0.25rem;
   left: 1rem;
   font-size: 0.5rem;
   color: #00a2ff;
