@@ -64,7 +64,7 @@
 							</tr>
 							<tr>
 								<td rowspan="2">均价<a>{{pData[pData.length-1].nowPrice}}</a></td>
-								<td rowspan="2">外盘<a>{{pData[pData.length-1].nowPrice}}</a></td>
+								<!-- <td rowspan="2">外盘<a>{{pData[pData.length-1].nowPrice}}</a></td> -->
 							</tr>
 							<tr>
 
