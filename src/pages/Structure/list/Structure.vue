@@ -14,10 +14,10 @@
     <!-- 搜索框 -->
     <van-row class="search">
       <van-col span="24" style="text-align:center"></van-col>
-    <van-search placeholder="搜索" v-model="s"  shape="round"/>
+    <van-search placeholder="搜索" v-model="s"  shape="round"  @search="search(s)"/>
     </van-row>
     <!-- 图标 -->
-    <van-row class="top">
+   <!--  <van-row class="top">
       <van-col span="1"></van-col>
       <van-col span="5">
         <van-icon class="iconfont" class-prefix='icon' name='icon_mobilephone' />
@@ -36,11 +36,11 @@
         <p style="margin-top:0.15rem;color:#bcbcbc">企业广场</p>
       </van-col>
       <van-col span="1"></van-col>
-    </van-row>
+    </van-row> -->
 
-    <div style="height:0.2rem;background-color:#ededed;width:100%;position:fixed;top:3.8rem"></div>
+    <div style="height:0.2rem;background-color:#ededed;width:100%;position:fixed;top:1.8rem"></div>
 
-    <van-row style="margin-top:4.2rem">
+    <van-row style="margin-top:2.8rem">
       <van-col span="2"></van-col>
       <van-col span="3">
         <van-icon name="cluster-o" class="b" />
@@ -64,7 +64,7 @@
 
     <div style="height:0.2rem;background-color:#ededed;width:100%"></div>
 
-    <van-row style="margin:0.2rem 0">
+  <!--   <van-row style="margin:0.2rem 0">
       <van-col span="2"></van-col>
       <van-col span="3">
         <van-icon name="cluster-o" class="b" />
@@ -72,9 +72,9 @@
       <van-col span="17" style="font-size:0.35rem">创建团队</van-col>
       <van-col span="2">
         <van-icon name="arrow" class="d" />
-        <!-- 做跳转 -->
+        
       </van-col>
-    </van-row>
+    </van-row> -->
 
     <div style="height:0.2rem;background-color:#ededed;width:100%"></div>
 
@@ -184,6 +184,16 @@ export default {
     this.getList(0);
   },
   methods: {
+      search(s) {
+      this.$router.push({
+        path: "/searchs",
+        query: {
+          name: this.s,
+          coname: this.$route.query.coname,
+          pId: this.$route.query.pId
+        }
+      });
+    },
     gofgs(id, name) {
       this.$router.push({
         path: "/department",

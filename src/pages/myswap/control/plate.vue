@@ -22,14 +22,14 @@
 						<table cellspacing="0" :class="{play:pic==2}" cellpadding="0">
 							<tr>
 								<td rowspan="2">卖价<a>{{pData[pData.length-1].nowPrice}}</a></td>
-								<td rowspan="2">卖量<a>{{pData[pData.length-1].nowPrice}}</a></td>
+								<td rowspan="2">委拍成交量<a>{{pData[pData.length-1].nowPrice}}</a></td>
 							</tr>
 							<tr>
 
 							</tr>
 							<tr>
 								<td rowspan="2">买价<a>{{pData[pData.length-1].nowPrice}}</a></td>
-								<td rowspan="2">买量<a>{{pData[pData.length-1].nowPrice}}</a></td>
+								<td rowspan="2">竞买成交量<a>{{pData[pData.length-1].nowPrice}}</a></td>
 							</tr>
 							<tr>
 
@@ -42,22 +42,22 @@
 
 							</tr>
 							<tr>
-								<td rowspan="2">开盘<a>{{pData[pData.length-1].openPrice}}</a></td>
-								<td rowspan="2">成交量<a>{{pData[pData.length-1].dealCount}}</a></td>
+								<td rowspan="2">起拍价<a>{{pData[pData.length-1].openPrice}}</a></td>
+								<!-- <td rowspan="2">成交量<a>{{pData[pData.length-1].dealCount}}</a></td> -->
 							</tr>
 							<tr>
 
 							</tr>
 							<tr>
 								<td rowspan="2">最高<a>{{pData[pData.length-1].maxPrice}}</a></td>
-								<td rowspan="2">持仓量<a>{{pData[pData.length-1].dealCount}}</a></td>
+								<!-- <td rowspan="2">持仓量<a>{{pData[pData.length-1].dealCount}}</a></td> -->
 							</tr>
 							<tr>
 
 							</tr>
 							<tr>
 								<td rowspan="2">最低<a>{{pData[pData.length-1].minPrice}}</a></td>
-								<td rowspan="2">日增仓<a>{{pData[pData.length-1].nowPrice}}</a></td>
+								<!-- <td rowspan="2">日增仓<a>{{pData[pData.length-1].nowPrice}}</a></td> -->
 							</tr>
 							<tr>
 
@@ -70,7 +70,7 @@
 
 							</tr>
 							<tr>
-								<td rowspan="2">昨结<a>{{pData[pData.length-2].recyclePrice}}</a></td>
+								<!-- <td rowspan="2">昨结<a>{{pData[pData.length-2].recyclePrice}}</a></td> -->
 								<td rowspan="3">涨停<a>{{pData[pData.length-1].amplitude}}%</a></td>
 							</tr>
 							<tr>
@@ -83,9 +83,9 @@
 							<tr>
 								<td rowspan="3">跌停<a>{{pData[pData.length-1].nowPrice}}</a></td>
 							</tr>
-							<tr>
+							<!-- <tr>
 								<td rowspan="2">杠杆<a>--</a></td>
-							</tr>
+							</tr> -->
 							<tr>
 
 							</tr>

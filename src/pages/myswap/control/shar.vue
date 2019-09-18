@@ -65,9 +65,9 @@
   </van-tabbar>
  		<div class="pull">
  			<table border="" cellspacing="0" cellpadding="0">
- 				<tr><td><a style="font-size: 0.2rem; margin-left: 0.2rem; color: #ffffff; font-weight: bold;">卖</a><a style="font-size: 0.2rem; margin-left: 0.2rem; color:red; font-weight: bold;">{{maths1}}</a></td><th rowspan="3" style="font-size:1rem; color: #ffffff;">{{maths1}}</th></tr>
- 				<tr><td><a style="font-size: 0.2rem; margin-left: 0.2rem; color: #ffffff; font-weight: bold;">买</a><a style="font-size: 0.2rem; margin-left: 0.2rem; color:red; font-weight: bold;">{{maths1}}</a></td></tr>
- 				<tr><td><a style="font-size: 0.2rem; margin-left: 0.2rem; color: #ffffff; font-weight: bold;">仓</a><a style="font-size: 0.2rem; margin-left: 0.2rem; color:red; font-weight: bold;">{{maths1}}</a></td></tr>
+ 				<tr><td><a style="font-size: 0.3rem; margin-left: 0.2rem; color: #ffffff; font-weight: bold;">卖</a><a style="font-size: 0.3rem; margin-left: 0.2rem; color:red; font-weight: bold;">{{maths1}}</a></td><th rowspan="3" style="font-size:1rem; color: #ffffff;">{{maths1}}</th></tr>
+ 				<tr><td><a style="font-size: 0.3rem; margin-left: 0.2rem; color: #ffffff; font-weight: bold;">买</a><a style="font-size: 0.3rem; margin-left: 0.2rem; color:red; font-weight: bold;">{{maths1}}</a></td></tr>
+ 				<tr><td><a style="font-size: 0.3rem; margin-left: 0.2rem; color: #ffffff; font-weight: bold;">仓</a><a style="font-size: 0.3rem; margin-left: 0.2rem; color:red; font-weight: bold;">{{maths1}}</a></td></tr>
  			</table>
  		</div>
 	</div>
@@ -618,7 +618,7 @@ export default{
 }
 .jack{
 	width: 100%;
-	height: 10rem;
+	height: 60%;
 	/* margin-right: 5%; */
 }
 #time_cloumn{

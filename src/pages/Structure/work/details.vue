@@ -184,7 +184,7 @@ export default {
         path:'/content',
         query:{
           id:this.$route.query.id,
-          state:0,
+          state:1,
           name:"同意"
         }
       })
@@ -194,7 +194,7 @@ export default {
         path:'/content',
         query:{
           id:this.$route.query.id,
-          state:1,
+          state:2,
           name:"拒绝"
         }
       })

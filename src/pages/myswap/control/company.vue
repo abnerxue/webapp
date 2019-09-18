@@ -5,8 +5,8 @@
         <van-icon name="arrow-left" class="s-header-iconas" @click="onClickLeft" />
       </van-col>
       <van-col span="18" style="color:#ffffff;">拍品汇总</van-col>
-      <van-col span="2"><van-icon name="search" @click="gosearch"/></van-col>
-      <van-col span="2"><van-icon name="star-o"/></van-col>
+    <!--   <van-col span="2"><van-icon name="search" @click="gosearch"/></van-col>
+      <van-col span="2"><van-icon name="star-o"/></van-col> -->
     </van-row>
     <table class="list_li" cellspacing="0" cellpadding="0">
       <tr>
@@ -23,7 +23,7 @@
           <a>{{init.nowPrice}}</a>
         </td>
         <td>
-          <a>{{init.liftRate}}%</a>
+          <a >{{init.liftRate}}%</a>
         </td>
         <td>
           <a>{{Math.round(init.itemCount/10000)}}万</a>

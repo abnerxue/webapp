@@ -5,6 +5,7 @@ const childmember = () => import('@/pages/Structure/list/childmember.vue') //
 const add = () => import('@/pages/Structure/list/add.vue') //
 const addchild = () => import('@/pages/Structure/list/addchild.vue') //
 const search = () => import('@/pages/Structure/list/search.vue') //
+const searchs = () => import('@/pages/Structure/list/searchs.vue') //
 const department = () => import('@/pages/Structure/list/department.vue') //
 const mmdetail = () => import('@/pages/Structure/list/mmdetail.vue') //
 const adddept = () => import('@/pages/Structure/list/adddept.vue') //
@@ -45,7 +46,14 @@ const d = () => import('@/pages/Structure/choose/d.vue') //
 
 
 export default [
-
+    {
+        path: '/searchs',
+        name: 'searchs',
+        component: searchs,
+        meta:{
+            title:' '
+        },
+    },
 
     {
         path: '/Structure',

@@ -42,7 +42,7 @@ export default {
       content: ""
     };
   },
-  methods: {
+  methods: {//oa系统
     goback() {
       this.$router.push({
           path:"/details",
@@ -58,6 +58,7 @@ export default {
         id:this.$route.query.id,
         state:this.$route.query.state
       }
+      console.log(data)
       this.$ajax.post("/cxt/oa/approval/commit", _this.$qs.stringify(data), {
           headers: _this.Base.initAjaxHeader(1, data)
         })
