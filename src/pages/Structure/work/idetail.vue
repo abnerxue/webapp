@@ -99,7 +99,7 @@
               <p style="font-size:0.25rem">催办</p>
           </van-col>
           <van-col span="6">
-              <van-icon name="close" class="icon"/>
+              <van-icon name="close" @click="backout" class="icon"/>
               <p style="font-size:0.25rem">撤销</p>
           </van-col>
           <van-col span="6">
@@ -128,13 +128,27 @@ export default {
     };
   },
   methods: {
+     backout(){
+      let _this=this
+      let data = {
+        token:this.GLOBAL.token,
+        id:this.$route.query.id
+      }
+      this.$ajax.post("/cxt/oa/approval/cancel", _this.$qs.stringify(data), {
+          headers: _this.Base.initAjaxHeader(1, data)
+        })
+        .then(res => {
+          Toast(res.data.msg)
+       
+        });
+    },
      gocb(){
       let _this=this
       let data = {
         token:this.GLOBAL.token,
         id:this.$route.query.id
       }
-      this.$ajax.post("/cxt//oa/approval/urge", _this.$qs.stringify(data), {
+      this.$ajax.post("/cxt/oa/approval/urge", _this.$qs.stringify(data), {
           headers: _this.Base.initAjaxHeader(1, data)
         })
         .then(res => {

@@ -128,7 +128,7 @@
       <van-row style="text-align:center">
           <van-col span="1"></van-col>
           <van-col span="4" v-if='this.pagemember.edit==true'>
-              <van-icon name="close"  class="icon" @click='gocb'/>
+              <van-icon name='close' class="icon" @click='gocb'/>
               <p style="font-size:0.25rem">催办</p>
           </van-col> 
          
@@ -142,18 +142,24 @@
               <p style="font-size:0.25rem">更多</p>
           </van-col>
         
-          <van-col v-if='this.pagemember.state===0&&this.pagemember.edit==true' span="5">
+          <van-col v-if='this.pagemember.state===0 && this.pagemember.edit==false' span="11">
+              <button class="btn-a1" @click="reject">拒绝</button>
+          </van-col>
+          <van-col v-else-if='this.pagemember.edit==true' span="5">
               <button class="btn-a" @click="reject">拒绝</button>
           </van-col>
-          <van-col  v-else span="11" style='margin-right:0;'>
-              <!-- <button class="btn-a1" @click="reject">拒绝</button> -->
+       <!--    <van-col  v-else span="11" style='margin-right:0;'>
+              <button class="btn-a1" @click="reject">拒绝</button>
+          </van-col> -->
+          <van-col v-if='this.pagemember.state===0&&this.pagemember.edit==false' span="11">
+              <button class="btn-b1" @click="agree">同意</button>
           </van-col>
-          <van-col v-if='this.pagemember.state===0&&this.pagemember.edit==true' span="5">
+           <van-col v-else-if='this.pagemember.edit==true' span="5">
               <button class="btn-b" @click="agree">同意</button>
           </van-col>
-          <van-col  v-else span="11"  style='margin-left:0;'>
-              <!-- <button class="btn-b1" @click="agree">同意</button> -->
-          </van-col>
+          <!-- <van-col  v-else span="11"  style='margin-left:0;'>
+              <button class="btn-b1" @click="agree">同意</button>
+          </van-col> -->
           <van-col span="1"></van-col>
       </van-row>
     </div>
@@ -191,11 +197,11 @@ export default {
         token:this.GLOBAL.token,
         id:this.$route.query.id
       }
-      this.$ajax.post("/cxt//oa/approval/urge", _this.$qs.stringify(data), {
+      this.$ajax.post("/cxt/oa/approval/urge", _this.$qs.stringify(data), {
           headers: _this.Base.initAjaxHeader(1, data)
         })
         .then(res => {
-        console.log(res.data)
+       
           Toast(res.data.msg)
        
         });
@@ -400,6 +406,7 @@ export default {
 }
 
 .foot{
+  background: white;
     position: fixed;
     bottom: 0;
     width: 100%;

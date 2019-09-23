@@ -112,6 +112,8 @@ export default {
   font-size: 0.35rem
 }
 .footer{
+    background:white;
+    margin-left: 0;
     position: fixed;
     bottom: 0;
     width: 100%
