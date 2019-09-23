@@ -34,6 +34,7 @@
 <script>
 import Vue from "vue";
 import global_ from "../../global"; //引用文件
+import { Toast } from 'vant';
 Vue.prototype.GLOBAL = global_; //挂载到Vue实例上面
 export default {
   data() {
@@ -63,7 +64,9 @@ export default {
           headers: _this.Base.initAjaxHeader(1, data)
         })
         .then(res => {
-          
+          console.log(res.data)
+          Toast(res.data.msg)
+          this.$router.push('/approvalofme')
         });
     },
     goa(){

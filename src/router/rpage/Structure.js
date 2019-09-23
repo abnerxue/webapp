@@ -32,6 +32,7 @@ const idetail = () => import('@/pages/Structure/work/idetail.vue') //
 const approvalofme = () => import('@/pages/Structure/work/approvalofme.vue') //
 const details= () => import('@/pages/Structure/work/details.vue') //
 const sdetail= () => import('@/pages/Structure/work/sdetail.vue') //
+const recorder= () => import('@/pages/Structure/work/recorder.vue') //
 const content= () => import('@/pages/Structure/work/content.vue') //
 
 const choose = () => import('@/pages/Structure/send/choose.vue') //
@@ -46,6 +47,14 @@ const d = () => import('@/pages/Structure/choose/d.vue') //
 
 
 export default [
+    {
+        path: '/recorder',
+        name: 'recorder',
+        component: recorder,
+        meta:{
+            title:' '
+        },
+    },
     {
         path: '/searchs',
         name: 'searchs',

@@ -20,6 +20,10 @@
     <h3 class="m-h">人事管理</h3>
     <van-row style="text-align:center;margin:0.3rem 0.5rem">
       <van-col span="6">
+        <van-icon name="more-o" class="main-icon" @click="godk"/>
+        <p @click="godk">考勤打卡</p>
+      </van-col>
+      <van-col span="6">
         <van-icon name="more-o" class="main-icon" @click="goa"/>
         <p @click="goa">审批</p>
       </van-col>
@@ -155,6 +159,9 @@ export default {
     };
   },
   methods:{
+    godk(){
+      this.$router.push('/recorder')
+    },
     goa(){
       this.$router.push('/approval')
     },

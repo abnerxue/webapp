@@ -350,7 +350,13 @@ export default {
           headers: _this.Base.initAjaxHeader(1, data)
         })
         .then(res => {
+          if(res.state==='000'){
+              console.log(res.data)
           this.show1 = true;
+          }else{
+             Toast(res.data.msg)
+          }
+         
         });
     },
     onDelete() {

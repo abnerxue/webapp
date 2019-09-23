@@ -75,6 +75,8 @@ export default {
           headers: _this.Base.initAjaxHeader(1, data)
         })
         .then(res => {
+          console.log(res.data)
+          Toast(res.data.data)
           this.$router.push({
             path: "/department",
             query: {

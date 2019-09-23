@@ -18,7 +18,7 @@
       <van-row class="main">
         <van-col span="6">
           <div class="round">
-          {{this.pagemember.username.slice(-1)}}
+          {{(this.pagemember.username||'').slice(-1)}}
           </div>
         </van-col>
         <van-col span="14">
@@ -59,7 +59,7 @@
       <van-row>
         <van-col span="6">
           <div class="round">
-            {{this.pagemember.username.slice(-1)}}
+            {{(this.pagemember.username||'').slice(-1)}}
           </div>
         </van-col>
         <van-col span="11" class="aa">我&nbsp;&nbsp;发起申请</van-col>
@@ -70,14 +70,14 @@
         <van-row>
         <van-col span="6">
           <div class="round">
-            {{item.username.slice(-1)}}
+            {{(item.username||'').slice(-1)}}
           </div>
         </van-col>
         <van-col span="11" class="aa">
             {{item.username}}&nbsp;&nbsp;<span style="color: #02b638">{{item.statename}}</span>
         </van-col>
-        <van-col span="3" class="d">{{item.ctime.slice(5,10)}}</van-col>
-        <van-col span="4" class="d">{{item.ctime.slice(11,16)}}</van-col>
+        <van-col span="3" class="d">{{(item.ctime||'').slice(5,10)}}</van-col>
+        <van-col span="4" class="d">{{(item.ctime||'').slice(11,16)}}</van-col>
       </van-row>
 
       <van-row>
@@ -95,7 +95,7 @@
       <van-row style="text-align:center">
           <van-col span="3"></van-col>
           <van-col span="6">
-              <van-icon name="close"  class="icon"/>
+              <van-icon name="close"  class="icon" @click="gocb"/>
               <p style="font-size:0.25rem">催办</p>
           </van-col>
           <van-col span="6">
@@ -113,6 +113,7 @@
 </template>
 <script>
 import Vue from "vue";
+import { Toast } from 'vant';
 import { ImagePreview } from 'vant';
 import global_ from "../../global"; //引用文件
 Vue.prototype.GLOBAL = global_; //挂载到Vue实例上面
@@ -127,6 +128,21 @@ export default {
     };
   },
   methods: {
+     gocb(){
+      let _this=this
+      let data = {
+        token:this.GLOBAL.token,
+        id:this.$route.query.id
+      }
+      this.$ajax.post("/cxt//oa/approval/urge", _this.$qs.stringify(data), {
+          headers: _this.Base.initAjaxHeader(1, data)
+        })
+        .then(res => {
+        console.log(res.data.data)
+          Toast(res.data.data)
+       
+        });
+    },
     gofirst() {
       this.$router.push("/work");
     },
@@ -148,7 +164,7 @@ export default {
         .then(res => {
           this.pagemember = res.data.data;
           console.log(this.pagemember);
-          if(this.pagemember.state==0){
+          /* if(this.pagemember.state==0){
             this.statename="待审批"
           }else if(this.pagemember.state==1){
             this.statename="审批通过"
@@ -156,10 +172,10 @@ export default {
             this.statename="拒绝"
           }else{
             this.statename="撤回"
-          }
+          } */
           this.str = JSON.parse(this.pagemember.content)
           
-          for(let i = 0; i<this.pagemember.process.length;i++){
+          /* for(let i = 0; i<this.pagemember.process.length;i++){
             if(this.pagemember.process[i].state==0){
               this.pagemember.process[i].statename=""
             }else if(this.pagemember.process[i].state==1){
@@ -167,7 +183,7 @@ export default {
             }else{
               this.pagemember.process[i].statename="审批通过"
             }
-          }
+          } */
         });
         
     },

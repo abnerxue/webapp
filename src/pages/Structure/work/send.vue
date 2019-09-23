@@ -35,7 +35,7 @@
           <div class="c">{{item.statename}}</div>
           
         </van-col>
-        <van-col span="4" class="b">{{item.ctime.slice(11,16)}}</van-col>
+        <van-col span="4" class="b">{{item.ctime.slice(5,16)}}</van-col>
       </van-row>
     </div>
     </van-list>
@@ -110,7 +110,7 @@ export default {
             }
           }
 
-          for(let i =0 ; i<this.pagemember.length;i++){
+      /*     for(let i =0 ; i<this.pagemember.length;i++){
             if(this.pagemember[i].state==0){
             this.pagemember[i].statename="待审批"
           }else if(this.pagemember.state==1){
@@ -121,7 +121,7 @@ export default {
             this.pagemember[i].statename="撤回"
           }
           }
-
+ */
           for(let i =0 ; i<this.pagemember.length;i++){
             this.pagemember[i].str=JSON.parse(this.pagemember[i].content)
           }

@@ -38,7 +38,7 @@
           <div class="c">{{item.statename}}</div>
           
         </van-col>
-        <van-col span="4" class="b">{{item.ctime.slice(11,16)}}</van-col>
+        <van-col span="4" class="b">{{item.ctime.slice(5,16)}}</van-col>
       </van-row>
     </div>
     </van-list>

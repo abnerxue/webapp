@@ -1,3 +1,36 @@
+
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//
+//         .............................................
+//                  佛祖镇楼                  BUG辟易
+//          997曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+
+
 <template>
   <div class="m-bg">
     <van-row class="m-header">
@@ -18,7 +51,7 @@
       <van-row class="main">
         <van-col span="6">
           <div class="round">
-          {{this.pagemember.username.slice(-1)}}
+          {{(this.pagemember.username||'').slice(-1) }}
           </div>
         </van-col>
         <van-col span="14">
@@ -59,7 +92,7 @@
       <van-row>
         <van-col span="6">
           <div class="round">
-            {{this.pagemember.username.slice(-1)}}
+            {{(this.pagemember.username||'').slice(-1)}}
           </div>
         </van-col>
         <van-col span="11" class="aa">{{this.pagemember.username}}&nbsp;&nbsp;发起申请</van-col>
@@ -70,14 +103,14 @@
         <van-row>
         <van-col span="6">
           <div class="round">
-            {{item.username.slice(-1)}}
+            {{(item.username||'').slice(-1)}}
           </div>
         </van-col>
         <van-col span="11" class="aa">
             {{item.username}}&nbsp;&nbsp;<span style="color: #02b638">{{item.statename}}</span>
         </van-col>
-        <van-col span="3" class="d">{{item.ctime.slice(5,10)}}</van-col> <!-- shijian  -->
-        <van-col span="4" class="d">{{item.ctime.slice(11,16)}}</van-col>
+        <van-col span="3" class="d">{{(item.ctime||'').slice(5,10) }}</van-col> 
+        <van-col span="4" class="d">{{(item.ctime||'').slice(11,16)}}</van-col>
       </van-row>
 
       <van-row>
@@ -94,23 +127,32 @@
     <div class="foot">
       <van-row style="text-align:center">
           <van-col span="1"></van-col>
-          <van-col span="4">
-              <van-icon name="close"  class="icon"/>
+          <van-col span="4" v-if='this.pagemember.edit==true'>
+              <van-icon name="close"  class="icon" @click='gocb'/>
               <p style="font-size:0.25rem">催办</p>
-          </van-col>
-          <van-col span="4">
-              <van-icon name="close" class="icon"/>
+          </van-col> 
+         
+          <van-col span="4" v-if='this.pagemember.edit==true'>
+              <van-icon name="close" class="icon" @click="backout"/>
               <p style="font-size:0.25rem">撤销</p>
           </van-col>
-          <van-col span="4">
+         
+          <van-col span="4" v-if='this.pagemember.edit==true'>
               <van-icon name="close" class="icon"/>
               <p style="font-size:0.25rem">更多</p>
           </van-col>
-          <van-col span="5">
+        
+          <van-col v-if='this.pagemember.state===0&&this.pagemember.edit==true' span="5">
               <button class="btn-a" @click="reject">拒绝</button>
           </van-col>
-          <van-col span="5">
+          <van-col  v-else span="11" style='margin-right:0;'>
+              <!-- <button class="btn-a1" @click="reject">拒绝</button> -->
+          </van-col>
+          <van-col v-if='this.pagemember.state===0&&this.pagemember.edit==true' span="5">
               <button class="btn-b" @click="agree">同意</button>
+          </van-col>
+          <van-col  v-else span="11"  style='margin-left:0;'>
+              <!-- <button class="btn-b1" @click="agree">同意</button> -->
           </van-col>
           <van-col span="1"></van-col>
       </van-row>
@@ -119,14 +161,14 @@
 </template>
 <script>
 import Vue from "vue";
-import { ImagePreview } from 'vant';
+import { ImagePreview, Toast } from 'vant';
 import global_ from "../../global"; //引用文件
 Vue.prototype.GLOBAL = global_; //挂载到Vue实例上面
 export default {
   data() {
     return {
       statename:'',
-      detailsOfApproval:'',
+      // detailsOfApproval:'',
       content:'',
       str:'',
       pagemember:'',
@@ -143,6 +185,37 @@ export default {
     top(){
       window.scrollTo(0,0)
     },
+     gocb(){
+      let _this=this
+      let data = {
+        token:this.GLOBAL.token,
+        id:this.$route.query.id
+      }
+      this.$ajax.post("/cxt//oa/approval/urge", _this.$qs.stringify(data), {
+          headers: _this.Base.initAjaxHeader(1, data)
+        })
+        .then(res => {
+        console.log(res.data)
+          Toast(res.data.msg)
+       
+        });
+    },
+   
+    backout(){
+      let _this=this
+      let data = {
+        token:this.GLOBAL.token,
+        id:this.$route.query.id
+      }
+      this.$ajax.post("/cxt/oa/approval/cancel", _this.$qs.stringify(data), {
+          headers: _this.Base.initAjaxHeader(1, data)
+        })
+        .then(res => {
+          Toast(res.data.msg)
+       
+        });
+    },
+   
     getList(){
       let _this=this
       let data = {
@@ -152,12 +225,13 @@ export default {
       this.$ajax.post("/cxt/oa/approval/approvalInfo", _this.$qs.stringify(data), {
           headers: _this.Base.initAjaxHeader(1, data)
         })
-        .then(res => {
+        .then(res => {       
+          console.log(res.data.data)
           this.pagemember = res.data.data;
-          // this.images=JSON.stringify(this.pagemember.images);
+          this.images=JSON.stringify(this.pagemember.images);
           // console.log(this.images)
 
-          if(this.pagemember.state==0){
+        /*   if(this.pagemember.state==0){
             this.statename="待审批"
           }else if(this.pagemember.state==1){
             this.statename="审批通过"
@@ -165,9 +239,12 @@ export default {
             this.statename="拒绝"
           }else{
             this.statename="撤回"
-          }
-          this.str = JSON.parse(this.pagemember.content)
-          
+          } */
+      
+          // this.str = JSON.parse(this.pagemember.content) 
+         this.str = JSON.parse(this.pagemember.content) 
+          console.log( this.str)
+         /*  
           for(let i = 0; i<this.pagemember.process.length;i++){
             if(this.pagemember.process[i].state==0){
               this.pagemember.process[i].statename=""
@@ -176,7 +253,7 @@ export default {
             }else{
               this.pagemember.process[i].statename="审批通过"
             }
-          }
+          } */
         });
     },
     agree(){
@@ -340,6 +417,16 @@ export default {
     border: 0.02rem solid #bcbcbc;
     margin-top:0.2rem
 }
+.btn-a1{
+    color: #00a2ff;
+    background-color: white;
+    font-size: 0.3rem;
+    width:2.6rem;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    border: 0.02rem solid #bcbcbc;
+    margin-top:0.2rem
+}
 .btn-b{
     color: white;
     background-color: #00a2ff;
@@ -350,7 +437,16 @@ export default {
     border: 0.02rem solid #bcbcbc;
     margin-top:0.2rem
 }
-
+.btn-b1{
+    color: white;
+    background-color: #00a2ff;
+    font-size: 0.3rem;
+    width:2.6rem;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    border: 0.02rem solid #bcbcbc;
+    margin-top:0.2rem
+}
 .icon{
     font-size:0.5rem
 }
