@@ -315,7 +315,7 @@ parseArr: function (arr) {
       this.$ajax.post('/cxt/relation/bind', _this.$qs.stringify(data), {
           headers: _this.Base.initAjaxHeader(1, data)
         }).then(res => {
-          Toast(res.data.state)
+          Toast(res.data.msg)
           if(res.data.state==='012'){
            Dialog.confirm({
            title: '后台管理系统',

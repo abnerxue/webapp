@@ -201,7 +201,7 @@ export default {
 
 .m-header-icon {
   position: absolute;
-  top: 0.25rem;
+  top: 0rem;
   left: 0.2rem;
   font-size: 0.5rem;
   color: #00a2ff;

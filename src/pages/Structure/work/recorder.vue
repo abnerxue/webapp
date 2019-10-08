@@ -8,7 +8,7 @@
       <van-col span="6"></van-col>
     </van-row>
     <!-- <div id="container" class="mymap"></div> -->
-    <div style="margin-top:1rem">
+    <div style="margin-top:2rem">
       <van-row class="main">
         <van-col span="6">
           <div class="round">
@@ -24,31 +24,41 @@
       </van-row>
     </div>
     <hr>
-    <div class = "local">
+   
+     <div>
+       <span class="address-record1"></span> <span class="describe1">上班时间{{}}</span>
+          
+     </div>
+     <div>  <span class="address-record1"></span> <span class="describe1">上班时间{{}}</span></div>
+    <!-- <div class="address">
+      <div class="address-record">
+        <span class="address-record-status">正常</span>
+      </div >
+        
+    </div> -->
+
+    <!-- <div class="describe">
+      <span class="describe-one">备注</span>
+      <span class="describe-two">选填</span>
+    
+    </div> -->
+      <!-- <img class="describe-three" src="../assets/camera.png"> -->
+     <div>
+        <div class="footer">
+      <div class="footer-time" id="Date"></div>
+      <div class="footer-status">&nbsp&nbsp打卡</div>
+     
+    </div>
+     <div class = "local">
       <span>我的位置</span>
       <span class="local-one">（在</span>
       <span class="local-two">考勤范围</span>
       <span class="local-one">内）</span>
       <!-- <span class="local-two">我要反馈</span> -->
     </div>
-
-    <div class="address">
-      <div class="address-record">
-        <span class="address-record-status">正常</span>
-      </div >
-        
-    </div>
-
-    <div class="describe">
-      <span class="describe-one">备注</span>
-      <span class="describe-two">选填</span>
-      <!-- <img class="describe-three" src="../assets/camera.png"> -->
-    </div>
-
-    <div class="footer">
-      <div class="footer-time" id="Date"></div>
-      <div class="footer-status">&nbsp&nbsp正常打卡</div>
-    </div>
+     </div>
+   
+     
   </div>
 </template>
 
@@ -146,7 +156,7 @@
     height: 386px;
   }
   .local{
-      margin-top:2rem;
+      margin-top:0rem;
     line-height: 44px;
     font-size: 16px;
     text-align: left;
@@ -169,15 +179,17 @@
     text-align: left;
     margin-left: 15px;
   }
-  .address-record{
+  .address-record1{
     float: left;
-    width: 36px;
-    line-height: 10px;
+    width: 10px;
+    height:10px;
+    margin-top:0.3rem;
+    margin-left:0.3rem;
     text-align: center;
     background: #26a0f5;
     border: solid #26a0f5;
-    border-radius:10px;
-    margin-right:10px;
+    border-radius:50%;
+    
   }
   .address-record-status{
     color: #fff;
@@ -188,6 +200,14 @@
     margin-top: 15px;
     border-top:1px solid #d9d9d9;
     border-bottom:1px solid #d9d9d9;
+    margin-left: 15px;
+    text-align:  left;
+    font-size: 16px;
+    line-height: 45px;
+  }
+  .describe1{
+  
+    
     margin-left: 15px;
     text-align:  left;
     font-size: 16px;
@@ -222,6 +242,7 @@
     text-align:right;
   }
   .footer-status{
+    /* border-radius: 50%; */
     color:#ffffff;
     font-size:17px;
     text-align:left

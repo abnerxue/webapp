@@ -25,7 +25,7 @@
       <van-row class="main">
         <van-col span="6">
           <div class="round">
-          {{item.username.slice(-1)}}
+          {{(item.username||'').slice(-1)}}
           </div>
         </van-col>
         <van-col span="14">
@@ -35,7 +35,7 @@
           <div class="c">{{item.statename}}</div>
           
         </van-col>
-        <van-col span="4" class="b">{{item.ctime.slice(5,16)}}</van-col>
+        <van-col span="4" class="b">{{(item.ctime||'').slice(5,16)}}</van-col>
       </van-row>
     </div>
     </van-list>
@@ -196,7 +196,7 @@ export default {
 
 .m-header-icon {
   position: absolute;
-  top: 0.25rem;
+  top: 0rem;
   left: 0.2rem;
   font-size: 0.5rem;
   color: #00a2ff;

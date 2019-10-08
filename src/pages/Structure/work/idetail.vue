@@ -63,8 +63,8 @@
           </div>
         </van-col>
         <van-col span="11" class="aa">我&nbsp;&nbsp;发起申请</van-col>
-        <van-col span="3" class="d"></van-col>
-        <van-col span="4" class="d"></van-col>
+        <van-col span="" class="d"></van-col>
+        <van-col span="7" class="d">{{(this.$route.query.sqtime||'').slice(5,16)}}</van-col>
       </van-row>
       <div v-for="(item,index) in pagemember.process" :key="index" style="margin-top:0.3rem">
         <van-row>
@@ -76,8 +76,8 @@
         <van-col span="11" class="aa">
             {{item.username}}&nbsp;&nbsp;<span style="color: #02b638">{{item.statename}}</span>
         </van-col>
-        <van-col span="3" class="d">{{(item.ctime||'').slice(5,10)}}</van-col>
-        <van-col span="4" class="d">{{(item.ctime||'').slice(11,16)}}</van-col>
+        <van-col span="7" class="d">{{(item.utimestr||'').slice(5,16) }}</van-col>
+        <!-- <van-col span="4" class="d">{{(item.ctime||'').slice(11,16)}}</van-col> -->
       </van-row>
 
       <van-row>
@@ -95,11 +95,11 @@
       <van-row style="text-align:center">
           <van-col span="3"></van-col>
           <van-col span="6">
-              <van-icon name="close"  class="icon" @click="gocb"/>
+              <van-icon name="../../../static/img/cb.png"  class="icon" @click="gocb"/>
               <p style="font-size:0.25rem">催办</p>
           </van-col>
           <van-col span="6">
-              <van-icon name="close" @click="backout" class="icon"/>
+              <van-icon name="../../../static/img/撤销.png" @click="backout" class="icon"/>
               <p style="font-size:0.25rem">撤销</p>
           </van-col>
           <van-col span="6">
@@ -237,7 +237,7 @@ export default {
 
 .m-header-icon {
   position: absolute;
-  top: 0.25rem;
+  top: 0rem;
   left: 0.2rem;
   font-size: 0.5rem;
   color: #00a2ff;

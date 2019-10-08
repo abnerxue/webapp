@@ -16,7 +16,7 @@
     </van-row>
     <div style="margin-top:1rem">
       <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-    <div v-for="(item,index) in pagemember" :key="index" style="margin-top:0.2rem" @click="gonext(item.id)">
+    <div v-for="(item,index) in pagemember" :key="index" style="margin-top:0.2rem" @click="gonext(item.id,item.ctime)">
       <van-row class="main">
         <van-col span="6">
           <div class="round">
@@ -156,11 +156,12 @@ export default {
     //       }
     //     });
     // },
-    gonext(id){
+    gonext(id,ctime){
       this.$router.push({
         path:"/details",
         query:{
-          id:id
+          id:id,
+          sqtime:ctime,
         }
       })
     }
@@ -191,7 +192,7 @@ export default {
 
 .m-header-icon {
   position: absolute;
-  top: 0.25rem;
+  top: 0rem;
   left: 0.2rem;
   font-size: 0.5rem;
   color: #00a2ff;

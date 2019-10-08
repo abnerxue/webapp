@@ -21,7 +21,7 @@
     <van-row style="text-align:center;margin:0.3rem 0.5rem">
       <van-col span="6">
         <van-icon name="more-o" class="main-icon" @click="godk"/>
-        <p @click="godk">考勤打卡</p>
+        <p >考勤打卡</p>
       </van-col>
       <van-col span="6">
         <van-icon name="more-o" class="main-icon" @click="goa"/>

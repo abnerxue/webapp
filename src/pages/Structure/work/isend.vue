@@ -24,7 +24,7 @@
     <hr style="position:fixed;top:1.85rem;width:100%">
     
     <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" style="margin-top:1.85rem">
-    <div v-for="(item,index) in card" :key="index" @click="godetail(item.id)">
+    <div v-for="(item,index) in card" :key="index" @click="godetail(item.id,item.ctime)">
       <van-row class="main">
         <van-col span="6">
           <div class="round">
@@ -113,7 +113,7 @@ export default {
             }
           }
 
-          for(let i =0 ; i<this.card.length;i++){
+          /* for(let i =0 ; i<this.card.length;i++){
             if(this.card[i].state==0){
             this.card[i].statename="待审批"
           }else if(this.card.state==1){
@@ -123,7 +123,7 @@ export default {
           }else{
             this.card[i].statename="撤回"
           }
-          }
+          } */
 
           for(let i =0 ; i<this.card.length;i++){
             this.card[i].str=JSON.parse(this.card[i].content)
@@ -161,11 +161,12 @@ export default {
     //       }
     //     });
     // },
-    godetail(id){
+    godetail(id,ctime){
       this.$router.push({
         path:"idetail",
         query:{
-          id:id
+          id:id,
+          sqtime:ctime
         },
       })
     },
@@ -197,7 +198,7 @@ export default {
 
 .m-header-icon {
   position: absolute;
-  top: 0.25rem;
+  top: 0rem;
   left: 0.2rem;
   font-size: 0.5rem;
   color: #00a2ff;
